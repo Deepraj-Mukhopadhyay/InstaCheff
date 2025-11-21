@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InstaChef – Image to Recipe Generation App</title>
+  <meta name="description" content="Welcome to InstaChef!Upload or snap an image, generate recipes instantly, and cook smarter with AI! Created by Culinary Coders. • Deepraj Mukhopadhyay (Team Leader) Your AI-powered cooking companion.">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Open Graph / Facebook Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://instacheff.netlify.app/">
+  <meta property="og:title" content="InstaChef – Image to Recipe Generation App" />
+  <meta property="og:description" content="Created by Culinary Coders. • Deepraj Mukhopadhyay (Team Leader & Designer).
+Upload or snap an image, generate recipes instantly, and cook smarter with AI!
+
+ 
+  <!-- OG image/logo -->
+  <meta property="og:image" content="https://instacheff.netlify.app/images/og-image.webp">
+  <meta property="og:image:secure_url" content="https://instacheff.netlify.app/images/og-image.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:alt" content="InstaChef app preview showing recipe scanning and discovery features">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:logo" content="https://instacheff.netlify.app/images/Logo (2).webp" />
+
+  <meta property="og:site_name" content="InstaChef">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://instacheff.netlify.app/">
+  <meta name="twitter:title" content="InstaChef - Your AI Recipe Discovery App">
+  <meta name="twitter:description" content="Snap ingredients, discover recipes instantly! InstaChef uses AI to help you cook amazing meals with what you have.">
+  <meta name="twitter:image" content="https://instacheff.netlify.app/images/og-image.webp">
+  <meta name="twitter:image:alt" content="InstaChef app preview showing recipe scanning and discovery features">
+  <meta name="twitter:creator" content="@instachef">
+  <meta name="twitter:site" content="@instachef">
+
+  <!-- LinkedIn Meta Tags -->
+  <meta property="article:author" content="InstaChef Team">
+  <meta property="article:publisher" content="https://instacheff.netlify.app">
+
+  <!-- WhatsApp Specific Meta Tags -->
+  <meta property="og:updated_time" content="2025-09-27T00:00:00Z">
+
+  <!-- Pinterest Meta Tags -->
+  <meta name="pinterest-rich-pin" content="true">
+  <meta property="og:see_also" content="https://instacheff.netlify.app/pages/explore.html">
+
+  <!-- Telegram Meta Tags -->
+  <meta property="tg:site_verification" content="instacheff">
+
+  <!-- Discord Meta Tags -->
+  <meta property="og:video" content="">
+  <meta name="theme-color" content="#FF6B35">
+
+  <!-- Instagram/Facebook Stories Meta Tags -->
+  <meta property="ia:markup_url" content="https://instacheff.netlify.app/">
+  <meta property="fb:app_id" content="">
+
+  <!-- Snapchat Meta Tags -->
+  <meta property="snapchat:sticker" content="https://instacheff.netlify.app/images/og-image.webp">
+
+  <!-- General Social Media Meta Tags -->
+  <meta name="author" content="InstaChef Team">
+  <meta name="keywords" content="recipe app, cooking, AI recipes, ingredient scanner, food discovery, meal planning, cooking assistant">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#FF6B35">
+
+  <!-- Apple Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="InstaChef">
+
+  <!-- Critical CSS inlined for fastest loading -->
+  <link rel="stylesheet" href="css/critical.css">
+  <!-- Non-critical CSS loaded asynchronously -->
+  <link rel="preload" href="css/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/index.css"></noscript>
+  <!-- Font Awesome loaded with preload for performance -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+  
+  <!-- Progress Bar Styles -->
+  <style>
+    .progress-container {
+      position: absolute;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      max-width: 340px;
+      text-align: center;
+      opacity: 1;
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 12px 20px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 248, 248, 0.9));
+      border-radius: 12px;
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 
+        0 6px 18px rgba(0, 0, 0, 0.1),
+        0 3px 6px rgba(0, 0, 0, 0.06),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+      z-index: 10;
+    }
+    
+    .progress-container.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef, #dee2e6);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      box-shadow: 
+        0 3px 12px rgba(0, 0, 0, 0.08), 
+        inset 0 1px 2px rgba(0, 0, 0, 0.06),
+        inset 0 -1px 2px rgba(255, 255, 255, 0.8);
+      position: relative;
+      backdrop-filter: blur(8px);
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(135deg, #00C851 0%, #28a745 30%, #20c997 60%, #17a2b8 100%);
+      background-size: 200% 200%;
+      border-radius: 8px;
+      width: 0%;
+      transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 
+        0 0 15px rgba(40, 167, 69, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.4),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.08);
+      position: relative;
+      animation: greenGradientShift 3s ease-in-out infinite;
+    }
+    
+    @keyframes greenGradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .progress-percentage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+      font-weight: 700;
+      color: #2c3e50;
+      text-shadow: 
+        0 1px 3px rgba(255, 255, 255, 0.9),
+        0 0 6px rgba(255, 255, 255, 0.8),
+        0 1px 1px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      pointer-events: none;
+      letter-spacing: 0.5px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    .progress-text {
+      color: #34495e;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.8px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      text-align: center;
+    }
+    
+    .progress-fill.animate {
+      animation: progressGlow 0.5s ease-in-out infinite alternate;
+    }
+    
+    @keyframes progressGlow {
+      from {
+        box-shadow: 0 0 10px rgba(40, 167, 69, 0.5), 0 1px 3px rgba(255, 255, 255, 0.2) inset;
+      }
+      to {
+        box-shadow: 0 0 20px rgba(40, 167, 69, 0.8), 0 1px 3px rgba(255, 255, 255, 0.3) inset;
+      }
+    }
+    
+    /* Responsive adjustments for different orientations */
+    @media screen and (orientation: landscape) and (max-height: 600px) {
+      .progress-container {
+        bottom: 80px;
+        padding: 14px 18px;
+        max-width: 320px;
+      }
+      
+      .progress-bar {
+        height: 24px;
+        margin-bottom: 10px;
+      }
+      
+      .progress-percentage {
+        font-size: 16px;
+      }
+      
+      .progress-text {
+        font-size: 14px;
+      }
+    }
+    
+    @media screen and (orientation: landscape) and (min-height: 601px) {
+      .progress-container {
+        bottom: 90px;
+        padding: 16px 22px;
+        max-width: 380px;
+      }
+      
+      .progress-bar {
+        height: 26px;
+        margin-bottom: 14px;
+      }
+      
+      .progress-percentage {
+        font-size: 18px;
+      }
+      
+      .progress-text {
+        font-size: 15px;
+      }
+    }
+
+    @media screen and (orientation: portrait) {
+      .progress-container {
+        bottom: 120px !important;
+        max-width: 350px !important;
+        padding: 10px 18px !important;
+      }
+      
+      .progress-bar {
+        height: 26px !important;
+        margin-bottom: 10px !important;
+      }
+      
+      .progress-percentage {
+        font-size: 19px !important;
+      }
+      
+      .progress-text {
+        font-size: 15px !important;
+      }
+    }
+    
+    /* YouTube-style AI Tab */
+    .ai-tab-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    
+    .ai-tab-button {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+    }
+    
+    .ai-tab-button:hover {
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-1px);
+    }
+    
+    .ai-tab-button.active {
+      background: #1976d2;
+      color: white;
+      border-color: #1976d2;
+    }
+    
+    .ai-tab-button.typing {
+      animation: none;
+    }
+    
+    .ai-tab-text.typing {
+      overflow: hidden;
+      border-right: 2px solid #333;
+      white-space: nowrap;
+      animation: typingLoop 4s steps(15, end) infinite, blink-cursor 1s infinite;
+    }
+    
+    @keyframes typingLoop {
+      0% { width: 0; }
+      50% { width: 15ch; }
+      75% { width: 15ch; }
+      100% { width: 0; }
+    }
+    
+    @keyframes blink-cursor {
+      0%, 50% { border-color: #333; }
+      51%, 100% { border-color: transparent; }
+    }
+    
+    .ai-tab-text {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Team Modal */
+    .team-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 2000;
+      backdrop-filter: blur(5px);
+    }
+    
+    .team-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .team-modal-content {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 248, 248, 0.9));
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 400px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        0 8px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+    
+    .team-modal.show .team-modal-content {
+      transform: scale(1);
+    }
+    
+    .team-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .team-modal-header h3 {
+      margin: 0;
+      color: #2c3e50;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    .team-members-intro {
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    
+    .team-members-intro p {
+      margin: 0;
+      color: #555;
+      font-size: 16px;
+      font-weight: 500;
+      font-style: italic;
+    }
+    
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .close-modal:hover {
+      background: rgba(0, 0, 0, 0.1);
+      color: #333;
+    }
+    
+    .team-members-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    
+    .team-member {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.7));
+      color: #2c3e50;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.08),
+        inset 0 1px 1px rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .team-member:hover {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(245, 245, 245, 0.9));
+      transform: translateY(-2px);
+      box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.12),
+        inset 0 1px 1px rgba(255, 255, 255, 1);
+    }
+    
+    .team-leader {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.8)) !important;
+      border: 1px solid rgba(52, 152, 219, 0.15) !important;
+    }
+    
+    .team-leader:hover {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 249, 250, 0.9)) !important;
+      border-color: rgba(52, 152, 219, 0.2) !important;
+    }
+    
+    .leader-role {
+      font-size: 12px;
+      color: #666;
+      font-weight: 400;
+      font-style: italic;
+      margin-top: 4px;
+      opacity: 0.8;
+    }
+    
+    /* Get Started Button Positioning */
+    .splash-button {
+      margin-top: 30px !important;
+      position: relative;
+      z-index: 5;
+    }
+    
+    /* Responsive adjustments for AI Tab */
+    @media screen and (orientation: landscape) and (max-height: 600px) {
+      .ai-tab-container {
+        top: 15px;
+        right: 15px;
+      }
+      
+      .ai-tab-button {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+      
+      .team-modal-content {
+        padding: 20px;
+        max-width: 350px;
+      }
+      
+      .team-modal-header h3 {
+        font-size: 18px;
+      }
+      
+      .team-member {
+        padding: 12px;
+        font-size: 12px;
+      }
+      
+      /* Button positioning in landscape */
+      .splash-button {
+        margin-top: 20px !important;
+      }
+      
+      /* Restore progress bar position */
+      .progress-container {
+        bottom: 65px;
+        max-width: 280px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 15px;
+      }
+    }
+    
+    @media screen and (orientation: portrait) {
+      .ai-tab-container {
+        top: 20px;
+        right: 20px;
+      }
+      
+      .ai-tab-button {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+      
+      .team-modal-content {
+        padding: 24px;
+        max-width: 400px;
+      }
+      
+      /* Button positioning in portrait */
+      .splash-button {
+        margin-top: 40px !important;
+      }
+      
+      /* Restore progress bar position */
+      .progress-container {
+        bottom: 30px;
+        padding: 18px;
+      }
+    }
+    
+    /* Extra small landscape screens */
+    @media screen and (orientation: landscape) and (max-height: 480px) {
+      .ai-tab-container {
+        top: 10px;
+        right: 10px;
+      }
+      
+      .ai-tab-button {
+        padding: 4px 10px;
+        font-size: 11px;
+        gap: 4px;
+      }
+      
+      .team-modal-content {
+        padding: 16px;
+        max-width: 300px;
+      }
+      
+      .team-modal-header h3 {
+        font-size: 16px;
+      }
+      
+      .team-member {
+        padding: 10px;
+        font-size: 11px;
+      }
+      
+      /* Button positioning in extra small landscape */
+      .splash-button {
+        margin-top: 15px !important;
+      }
+      
+      .progress-container {
+        bottom: 60px;
+        max-width: 250px;
+        padding: 12px;
+      }
+    }
+
+    /* High contrast mode for better visibility */
+    @media (prefers-contrast: high) {
+      .progress-bar {
+        background-color: rgba(150, 150, 150, 0.9);
+        border: 3px solid rgba(100, 100, 100, 1);
+      }
+      
+      .progress-container {
+        background: rgba(255, 255, 255, 0.95);
+        border: 2px solid rgba(200, 200, 200, 1);
+      }
+      
+      .progress-text {
+        color: #000000;
+        font-weight: 700;
+      }
+      
+      .member-name {
+        background: rgba(255, 255, 255, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.5);
+      }
+    }
+    
+    /* Premium Minimal Footer */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 255, 0.8);
+      padding: 8px 0;
+      z-index: 1000;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 
+        0 -2px 20px rgba(0, 0, 0, 0.08),
+        0 -1px 3px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+    
+    .footer p {
+      margin: 0;
+      font-size: 11px;
+      color: #333;
+      font-weight: 500;
+      line-height: 1.4;
+      text-align: center;
+      letter-spacing: 0.4px;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    }
+    
+    .footer strong {
+      font-weight: 700;
+      color: #1a1a1a;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .footer .college {
+      font-size: 10px;
+      color: #4a5568;
+      font-weight: 500;
+      opacity: 1;
+      font-style: italic;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Responsive adjustments for premium footer */
+    @media screen and (max-width: 768px) {
+      .footer {
+        height: 34px;
+        padding: 7px 0;
+      }
+      
+      .footer p {
+        font-size: 10px;
+        letter-spacing: 0.3px;
+      }
+      
+      .footer .college {
+        font-size: 9px;
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      .footer {
+        height: 32px;
+        padding: 6px 0;
+      }
+      
+      .footer p {
+        font-size: 9px;
+        letter-spacing: 0.2px;
+      }
+      
+      .footer .college {
+        font-size: 8px;
+      }
+    }
+    
+    @media screen and (max-width: 360px) {
+      .footer {
+        height: 30px;
+        padding: 5px 0;
+      }
+      
+      .footer p {
+        font-size: 8px;
+      }
+      
+      .footer .college {
+        font-size: 7px;
+      }
+    }
+
+    /* Portrait view footer spacing */
+    @media screen and (orientation: portrait) {
+      .footer p {
+        padding: 0 5px !important;
+        margin: 0 5px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="logo-container" id="logo-container">
+            <img src="images/Logo (2).webp" alt="InstaChef" class="splash-logo" id="splash-logo">
+        </div>
+        <p class="splash-tagline">Snap it, Cook it,<br>Share it, Love it</p>
+        
+        <!-- AI Info Tab -->
+        <div class="ai-tab-container">
+            <button class="ai-tab-button" id="ai-tab-button">
+                <i class="fas fa-info-circle"></i>
+                <span class="ai-tab-text">Culinary Coders</span>
+            </button>
+            
+            <!-- Team Info Modal -->
+            <div class="team-modal" id="team-modal">
+                <div class="team-modal-content">
+                    <div class="team-modal-header">
+                        <h3>Created By Culinary Coders</h3>
+                        <button class="close-modal" id="close-modal">&times;</button>
+                    </div>
+                    <div class="team-members-intro">
+                        <p>Team Members Include:</p>
+                    </div>
+                    <div class="team-members-grid">
+                        <div class="team-member team-leader">
+                            <strong>1. Deepraj Mukhopadhyay - Team Leader</strong>
+                        </div>
+                        <div class="team-member">2. Anant Kumar Thakur</div>
+                        <div class="team-member">3. Oishee Banerjee</div>
+                        <div class="team-member">4. Dipanjan Roy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button id="get-started-btn" class="splash-button">Get Started</button>
+        
+        <!-- Progress Bar Container -->
+        <div id="progress-container" class="progress-container hidden">
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+                <div class="progress-percentage" id="progress-percentage">0%</div>
+            </div>
+            <p class="progress-text">Loading...</p>
+        </div>
+        
+        <!-- Copyright Footer -->
+        <footer class="footer">
+  <p>© 2025-2026 <strong>InstaChef</strong> | Created by <strong>Culinary Coders</strong> — App by Deepraj Mukhopadhyay,<br>
+  Anant Kumar Thakur, Oishee Banerjee & Dipanjan Roy<br>
+</p>
+</footer>
+
+    <div class="app-container hidden">
+        <!-- Content will be loaded dynamically -->
+        <div id="app-content"></div>
+    </div>
+
+    <!-- Toast container for notifications -->
+    <div class="toast-container"></div>
+
+    <!-- Audio files for splash screen -->
+    <audio id="camera-click-sound" preload="auto">
+        <source src="audio/camera.mp3" type="audio/mpeg">
+        <!-- Add your camera MP3 file as: audio/camera.mp3 -->
+    </audio>
+    
+    <audio id="welcome-announcement" preload="auto">
+        <source src="audio/welcome annoucement.mp3" type="audio/mpeg">
+        <!-- Add your welcome announcement MP3 file as: audio/welcome-announcement.mp3 -->
+    </audio>
+
+    <!-- Main JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle splash screen
+            const splashScreen = document.getElementById('splash-screen');
+            const appContainer = document.querySelector('.app-container');
+            const getStartedBtn = document.getElementById('get-started-btn');
+            const logoContainer = document.getElementById('logo-container');
+            const progressContainer = document.getElementById('progress-container');
+            const progressFill = document.getElementById('progress-fill');
+            
+            // AI Tab elements
+            const aiTabButton = document.getElementById('ai-tab-button');
+            const teamModal = document.getElementById('team-modal');
+            const closeModal = document.getElementById('close-modal');
+            
+            // Audio elements
+            const cameraClickAudio = document.getElementById('camera-click-sound');
+            const welcomeAnnouncementAudio = document.getElementById('welcome-announcement');
+            
+            // Set audio volume to maximum (100%)
+            if (cameraClickAudio) {
+                cameraClickAudio.volume = 1.0;
+                console.log('Camera audio volume set to 100%');
+            }
+            if (welcomeAnnouncementAudio) {
+                welcomeAnnouncementAudio.volume = 1.0;
+                console.log('Welcome audio volume set to 100%');
+            }
+            
+            // Audio context for handling autoplay restrictions
+            let audioEnabled = false;
+            
+            // Function to enable audio after user interaction
+            function enableAudio() {
+                if (!audioEnabled) {
+                    console.log('Enabling audio after user interaction...');
+                    // Try to play and immediately pause to unlock audio
+                    if (welcomeAnnouncementAudio) {
+                        welcomeAnnouncementAudio.play().then(() => {
+                            welcomeAnnouncementAudio.pause();
+                            welcomeAnnouncementAudio.currentTime = 0;
+                            audioEnabled = true;
+                            console.log('Audio unlocked successfully');
+                            // Now play the welcome sound
+                            playWelcomeAnnouncement();
+                        }).catch(error => {
+                            console.log('Audio unlock failed:', error);
+                        });
+                    }
+                }
+            }
+            
+            // AI Tab functionality - YouTube style
+            console.log('AI Tab elements:', { aiTabButton, teamModal, closeModal });
+            
+            if (aiTabButton && teamModal && closeModal) {
+                console.log('Setting up AI Tab functionality...');
+                
+                // Start continuous typing animation when page loads
+                const aiTabText = aiTabButton.querySelector('.ai-tab-text');
+                setTimeout(() => {
+                    aiTabButton.classList.add('typing');
+                    aiTabText.classList.add('typing');
+                    console.log('AI Tab started continuous typing animation');
+                }, 2000);
+                
+                // AI Tab click handler
+                aiTabButton.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    console.log('AI Tab clicked - showing team modal');
+                    
+                    // Stop typing animation when clicked
+                    const aiTabText = aiTabButton.querySelector('.ai-tab-text');
+                    aiTabButton.classList.remove('typing');
+                    aiTabText.classList.remove('typing');
+                    aiTabButton.classList.add('active');
+                    
+                    // Show modal
+                    teamModal.classList.add('show');
+                });
+                
+                // Function to restart typing animation
+                function restartTypingAnimation() {
+                    const aiTabText = aiTabButton.querySelector('.ai-tab-text');
+                    aiTabButton.classList.remove('active');
+                    // Small delay to ensure smooth transition
+                    setTimeout(() => {
+                        aiTabButton.classList.add('typing');
+                        aiTabText.classList.add('typing');
+                        console.log('AI Tab typing animation restarted');
+                    }, 100);
+                }
+                
+                // Close modal handlers
+                closeModal.addEventListener('click', function() {
+                    console.log('Close button clicked');
+                    teamModal.classList.remove('show');
+                    restartTypingAnimation();
+                });
+                
+                // Close modal when clicking outside
+                teamModal.addEventListener('click', function(e) {
+                    if (e.target === teamModal) {
+                        console.log('Clicked outside modal - closing');
+                        teamModal.classList.remove('show');
+                        restartTypingAnimation();
+                    }
+                });
+                
+                // Close modal with Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && teamModal.classList.contains('show')) {
+                        console.log('Escape key pressed - closing modal');
+                        teamModal.classList.remove('show');
+                        restartTypingAnimation();
+                    }
+                });
+                
+            } else {
+                console.error('AI Tab elements not found:', {
+                    aiTabButton: !!aiTabButton,
+                    teamModal: !!teamModal,
+                    closeModal: !!closeModal
+                });
+            }
+            
+            // Function to show and animate premium progress bar with percentage
+            function showProgressBar() {
+                const progressPercentage = document.getElementById('progress-percentage');
+                const progressText = document.querySelector('.progress-text');
+                
+                if (progressContainer && progressFill && progressPercentage) {
+                    console.log('Starting premium progress bar animation...');
+                    
+                    // Show progress container with fade in
+                    progressContainer.classList.remove('hidden');
+                    progressFill.classList.add('animate');
+                    
+                    // Initialize at 0%
+                    progressFill.style.width = '0%';
+                    progressPercentage.textContent = '0%';
+                    progressText.textContent = 'Initializing...';
+                    
+                    // Animate progress from 0 to 100% over 5 seconds with smooth easing
+                    let progress = 0;
+                    const duration = 5000; // 5 seconds
+                    const startTime = Date.now();
+                    
+                    const loadingMessages = [
+                        'Initializing...',
+                        'Loading resources...',
+                        'Preparing interface...',
+                        'Setting up features...',
+                        'Almost ready...',
+                        'Finalizing...',
+                        'Complete!'
+                    ];
+                    
+                    const progressInterval = setInterval(() => {
+                        const elapsed = Date.now() - startTime;
+                        const rawProgress = (elapsed / duration) * 100;
+                        
+                        // Smooth easing function for premium feel
+                        progress = Math.min(100, rawProgress * (2 - rawProgress / 100));
+                        
+                        if (elapsed >= duration || progress >= 100) {
+                            progress = 100;
+                            clearInterval(progressInterval);
+                            
+                            // Show completion
+                            progressFill.style.width = '100%';
+                            progressPercentage.textContent = '100%';
+                            progressText.textContent = 'Complete!';
+                            
+                            // Hide progress bar after completion
+                            setTimeout(() => {
+                                progressContainer.classList.add('hidden');
+                            }, 800);
+                        } else {
+                            // Update progress bar width and percentage text
+                            const roundedProgress = Math.round(progress);
+                            progressFill.style.width = roundedProgress + '%';
+                            progressPercentage.textContent = roundedProgress + '%';
+                            
+                            // Update loading message based on progress
+                            const messageIndex = Math.min(Math.floor(progress / 15), loadingMessages.length - 1);
+                            progressText.textContent = loadingMessages[messageIndex];
+                        }
+                        
+                    }, 50); // Update every 50ms for smooth animation
+                }
+            }
+            
+            // Function to play camera click sound
+            function playCameraClickSound() {
+                if (cameraClickAudio) {
+                    cameraClickAudio.currentTime = 0; // Reset to beginning
+                    cameraClickAudio.play().catch(error => {
+                        console.log('Camera click sound failed to play:', error);
+                    });
+                }
+            }
+            
+            // Function to play welcome announcement
+            function playWelcomeAnnouncement() {
+                if (welcomeAnnouncementAudio) {
+                    welcomeAnnouncementAudio.currentTime = 0; // Reset to beginning
+                    welcomeAnnouncementAudio.play().catch(error => {
+                        console.log('Welcome announcement failed to play:', error);
+                    });
+                }
+            }
+            
+            // Function to play welcome announcement and wait for completion (4 seconds)
+            function playWelcomeAnnouncementAndWait(callback) {
+                if (welcomeAnnouncementAudio && audioEnabled) {
+                    console.log('Playing welcome announcement and waiting 4 seconds for completion...');
+                    welcomeAnnouncementAudio.currentTime = 0; // Reset to beginning
+                    
+                    welcomeAnnouncementAudio.play().then(() => {
+                        console.log('Welcome announcement started playing successfully');
+                        // Wait exactly 4 seconds before proceeding
+                        setTimeout(() => {
+                            console.log('4-second audio period completed, proceeding to navigation');
+                            if (callback) callback();
+                        }, 4000);
+                    }).catch(error => {
+                        console.error('Welcome announcement failed to play:', error);
+                        // If audio fails, still wait 4 seconds before proceeding
+                        setTimeout(() => {
+                            console.log('Audio failed but waiting 4 seconds before navigation');
+                            if (callback) callback();
+                        }, 4000);
+                    });
+                } else {
+                    console.log('Audio not available, but still waiting 4 seconds before navigation');
+                    // If no audio, still wait 4 seconds
+                    setTimeout(() => {
+                        if (callback) callback();
+                    }, 4000);
+                }
+            }
+            
+
+            
+            // Logo ripple animation function with white glow effect (visual only)
+            function triggerLogoRipple() {
+                if (logoContainer && splashScreen) {
+                    // Start logo ripple animation with delay (visual only, no sound)
+                    setTimeout(() => {
+                        logoContainer.classList.add('ripple-active');
+                    }, 500);
+                    
+                    // Trigger camera flash effect (delayed by 0.5s more)
+                    setTimeout(() => {
+                        splashScreen.classList.add('camera-flash');
+                        setTimeout(() => {
+                            splashScreen.classList.remove('camera-flash');
+                        }, 300);
+                    }, 1000);
+                    
+                    // Remove the ripple class after animation completes (delayed by 0.5s more)
+                    setTimeout(() => {
+                        logoContainer.classList.remove('ripple-active');
+                    }, 2500);
+                }
+            }
+            
+                        // Initialize splash screen (no automatic animations)
+            function initializeSplashScreen() {
+                // Just initialize - no automatic animations or sounds
+                console.log('Splash screen initialized - waiting for user interaction');
+            }
+            
+            // Handle get started button
+                if (getStartedBtn) {
+                getStartedBtn.addEventListener('click', function() {
+                    // Enable audio if not already enabled
+                    if (!audioEnabled) {
+                        enableAudio();
+                        // Don't return, continue with the process
+                    }
+                    
+                    // Hide the get started button
+                    getStartedBtn.style.display = 'none';
+                    
+                    // Show progress bar
+                    showProgressBar();
+                    
+                    // Play camera sound immediately
+                    playCameraClickSound();
+                    
+                    // Trigger logo ripple animation
+                    triggerLogoRipple();
+                    
+                    // Play welcome announcement and wait for completion before navigation
+                    playWelcomeAnnouncementAndWait(() => {
+                        console.log('Audio completed, navigating to onboarding page...');
+                        // Always navigate to onboarding page (ignore localStorage for now)
+                        window.location.href = 'pages/onboarding.html';
+                    });
+                });
+            }
+            
+            // Initialize everything
+            initializeSplashScreen();
+        });
+    </script>
+</body>
+</html>

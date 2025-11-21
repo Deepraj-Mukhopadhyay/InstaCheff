@@ -1,0 +1,37 @@
+/**
+ * InstaChef - AI-Powered Recipe Generation App
+ * Main CSS Stylesheet
+ * 
+ * Copyright (c) 2025 Culinary Coders Team
+ * All Rights Reserved
+ * 
+ * Team Members:
+ * • Deepraj Mukhopadhyay - Team Leader & Lead Designer (All designs & animations)
+ * • Anant Kumar Thakur - Developer
+ * • Oishee Banerjee - Developer
+ * • Dipanjan Roy - Developer
+ * 
+ * This stylesheet and all associated designs, animations, and visual elements
+ * are the exclusive property of the Culinary Coders team.
+ * 
+ * License: All Rights Reserved
+ * Unauthorized reproduction or distribution is prohibited.
+ * 
+ * Version: 1.0.0
+ * Created: 2025
+ */
+
+/* Critical styles - loaded first */
+@import url('./common/base.css');
+@import url('./common/components.css');
+@import url('./common/navigation.css');
+
+/* Utilities and responsive - can be deferred */
+@import url('./utilities/helpers.css');
+@import url('./responsive/breakpoints.css');
+@import url('./responsive/portrait.css');
+@import url('./responsive/landscape.css');
+@import url('./responsive/device-fixes.css');
+
+/* Print styles - only for print media */
+@import url('./print.css') print;

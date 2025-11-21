@@ -1,0 +1,20 @@
+<!-- This is a placeholder file -->
+<!-- Replace this file with your Canva-created OG preview image -->
+<!-- File name: og-preview.jpg -->
+<!-- Dimensions: 1200px × 630px -->
+<!-- Format: JPG (recommended) or PNG -->
+
+PLACEHOLDER FOR OG PREVIEW IMAGE
+=================================
+
+Your Canva image should be placed here as:
+📁 images/og-preview.jpg
+
+Recommended design elements:
+🍳 InstaChef logo
+📱 App mockup/screenshot  
+🥗 Appetizing food imagery
+🎨 Brand colors (Orange #FF6B35, Blue #007BFF)
+✨ Tagline: "Snap it, Cook it, Share it, Love it"
+
+See OG-IMAGE-INSTRUCTIONS.md for complete guidelines!

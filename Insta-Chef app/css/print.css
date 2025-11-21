@@ -1,0 +1,72 @@
+/**
+ * Print-specific styles for InstaChef App
+ * Ensures proper display when printing recipes
+ */
+
+@media print {
+    /* Hide navigation, headers, footers and buttons */
+    .nav-bar,
+    .header-back,
+    .button,
+    .btn,
+    .action-buttons,
+    footer,
+    .non-printable {
+        display: none !important;
+    }
+    
+    /* Reset page styles for printing */
+    .app-container {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+    }
+    
+    body, html {
+        background: white;
+        font-size: 12pt;
+    }
+    
+    /* Recipe specific print styling removed */
+    
+    .recipe-title {
+        font-size: 18pt;
+        margin-bottom: 0.25in;
+    }
+    
+    .recipe-meta {
+        margin-bottom: 0.25in;
+        border: 1px solid #eee;
+        padding: 0.1in;
+        justify-content: space-around;
+    }
+    
+    /* Print recipe ingredients and steps in columns if possible */
+    .recipe-ingredients-steps {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .recipe-ingredients {
+        flex: 1;
+        min-width: 2in;
+        padding-right: 0.25in;
+    }
+    
+    .recipe-steps {
+        flex: 2;
+    }
+    
+    /* Add page breaks appropriately */
+    .recipe-card {
+        page-break-inside: avoid;
+    }
+    
+    h2, h3 {
+        page-break-after: avoid;
+    }
+    
+    /* Print footer styling removed */
+}

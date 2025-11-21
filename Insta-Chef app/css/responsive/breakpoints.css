@@ -1,0 +1,107 @@
+/**
+ * Responsive breakpoints for InstaChef App
+ * Screen size and device-specific adaptations
+ */
+
+/* Base responsive container */
+.app-container {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100vh;
+    transition: max-width 0.3s ease;
+}
+
+/* Extra Large devices (large desktops, 1400px and up) */
+@media screen and (min-width: 1400px) {
+    .app-container {
+        max-width: 700px;
+        border-left: 1px solid #eee;
+        border-right: 1px solid #eee;
+        box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+}
+
+/* Large devices (desktops, 1200px and up) */
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+    .app-container {
+        max-width: 600px;
+        border-left: 1px solid #eee;
+        border-right: 1px solid #eee;
+        box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .app-container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    
+    /* Tablet-specific navigation */
+    .nav-bar {
+        max-width: 600px;
+        margin: 0 auto;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 15px 15px 0 0;
+    }
+    
+    /* Enhanced recipe grids for tablets */
+    .recipe-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 0 20px;
+    }
+    
+    /* Form elements for tablets */
+    .form-container {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    .app-container {
+        max-width: 100%;
+    }
+    
+    /* Recipe cards for small devices */
+    .recipe-card {
+        margin-bottom: 10px;
+    }
+    
+    .recipe-info h3 {
+        font-size: 15px;
+    }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media screen and (max-width: 575px) {
+    .app-container {
+        max-width: 100%;
+    }
+    
+    /* Compact layout for very small screens */
+    .content-area {
+        padding: 10px;
+        padding-bottom: 70px;
+    }
+    
+    .recipe-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    /* Smaller text on tiny screens */
+    body {
+        font-size: 14px;
+    }
+    
+    .button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

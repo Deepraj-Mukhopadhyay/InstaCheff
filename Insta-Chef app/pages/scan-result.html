@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaChef - Scan Result</title>
+    
+    <!-- Main organized CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="../css/pages/scan-result.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="scan-result-header">
+        <button class="back-button" onclick="window.history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1>Spaghetti Bolognese</h1>
+        <button class="save-button" id="save-recipe">
+            <span class="save-badge">Saved</span>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="scan-result-container">
+        <!-- Recipe Hero Section -->
+        <section class="recipe-hero">
+            <div class="hero-image-container">
+                <img src="../images/vegies.webp" alt="Spaghetti Bolognese" class="hero-image">
+            </div>
+        </section>
+
+        <!-- Recipe Info Section -->
+        <section class="recipe-info">
+            <div class="recipe-title-section">
+                <h2>Spaghetti Bolognese</h2>
+                <p class="recipe-subtitle">A classic Italian favorite</p>
+            </div>
+
+            <!-- Recipe Meta Information -->
+            <div class="recipe-meta">
+                <div class="meta-item">
+                    <div class="meta-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="meta-info">
+                        <span class="meta-label">Prep Time:</span>
+                        <span class="meta-value">20 min</span>
+                    </div>
+                </div>
+                
+                <div class="meta-item">
+                    <div class="meta-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="meta-info">
+                        <span class="meta-label">Cook Time:</span>
+                        <span class="meta-value">40 min</span>
+                    </div>
+                </div>
+                
+                <div class="meta-item">
+                    <div class="meta-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="meta-info">
+                        <span class="meta-label">Calories:</span>
+                        <span class="meta-value">550 kcal</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ingredients Section -->
+            <div class="ingredients-section">
+                <div class="ingredients-row">
+                    <div class="ingredient-item">
+                        <div class="ingredient-icon">
+                            <i class="fas fa-drumstick-bite"></i>
+                        </div>
+                        <span class="ingredient-name">Ground Beef</span>
+                        <span class="ingredient-desc">Tomato Sauce</span>
+                    </div>
+                    
+                    <div class="ingredient-item">
+                        <div class="ingredient-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <span class="ingredient-name">Onion</span>
+                        <span class="ingredient-desc">Garlic</span>
+                    </div>
+                    
+                    <div class="ingredient-item">
+                        <div class="ingredient-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <span class="ingredient-name">Garlic</span>
+                        <span class="ingredient-desc">Parmesan</span>
+                    </div>
+                    
+                    <div class="ingredient-item">
+                        <div class="ingredient-icon">
+                            <i class="fas fa-cheese"></i>
+                        </div>
+                        <span class="ingredient-name">Parmesan</span>
+                        <span class="ingredient-desc">Cheese</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructions Section -->
+        <section class="instructions-section">
+            <h3>Instructions</h3>
+            <div class="instructions-list">
+                <div class="instruction-item completed" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <span class="step-text">Brown the beef...</span>
+                        <div class="step-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="instruction-item" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <span class="step-text">Add sauce and simmer...</span>
+                        <div class="step-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="instruction-item completed" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <span class="step-text">Cook pasta...</span>
+                        <div class="step-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="instruction-item completed" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <span class="step-text">Combine and serve with cheese</span>
+                        <div class="step-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Navigation -->
+    <footer class="app-footer">
+        <nav class="main-nav">
+            <a href="home.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="scan.html" class="nav-item active">
+                <i class="fas fa-camera"></i>
+                <span>Scan</span>
+            </a>
+            <a href="saved.html" class="nav-item">
+                <i class="fas fa-bookmark"></i>
+                <span>Saved</span>
+            </a>
+            <a href="explore.html" class="nav-item">
+                <i class="fas fa-compass"></i>
+                <span>Explore</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </footer>
+
+    <script>
+        // Recipe functionality
+        class ScanResult {
+            constructor() {
+                this.init();
+            }
+            
+            init() {
+                this.bindEvents();
+                console.log('Scan Result page initialized');
+            }
+            
+            bindEvents() {
+                // Step completion toggle
+                document.querySelectorAll('.instruction-item').forEach(item => {
+                    item.addEventListener('click', () => this.toggleStep(item));
+                });
+                
+                // Save recipe toggle
+                document.getElementById('save-recipe')?.addEventListener('click', () => this.toggleSave());
+            }
+            
+            toggleStep(stepElement) {
+                stepElement.classList.toggle('completed');
+                const checkIcon = stepElement.querySelector('.step-check i');
+                
+                if (stepElement.classList.contains('completed')) {
+                    checkIcon.className = 'fas fa-check';
+                } else {
+                    checkIcon.className = 'far fa-circle';
+                }
+            }
+            
+            toggleSave() {
+                const saveButton = document.getElementById('save-recipe');
+                const badge = saveButton.querySelector('.save-badge');
+                
+                if (badge.textContent === 'Saved') {
+                    badge.textContent = 'Save';
+                    saveButton.classList.remove('saved');
+                    this.showToast('Recipe removed from saved', 'info');
+                } else {
+                    badge.textContent = 'Saved';
+                    saveButton.classList.add('saved');
+                    this.showToast('Recipe saved successfully!', 'success');
+                }
+            }
+            
+            showToast(message, type = 'info') {
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
+                toast.textContent = message;
+                
+                document.body.appendChild(toast);
+                
+                setTimeout(() => toast.classList.add('show'), 100);
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => toast.remove(), 300);
+                }, 3000);
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new ScanResult();
+        });
+    </script>
+</body>
+</html>

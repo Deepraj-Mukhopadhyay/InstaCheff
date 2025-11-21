@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaChef - Saved Recipes</title>
+    
+    <!-- Main organized CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="../css/pages/saved.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-logo-container">
+      <img src="../images/Logo (2).webp" alt="InstaChef" class="header-logo">
+    </div>
+    <button class="profile-button">
+      <img src="../images/user-icon.png" alt="Profile">
+    </button>
+  </header>
+
+  <!-- Main Content -->
+  <main class="explore-container">
+    <!-- Filter Tabs Section -->
+    <section class="filter-section">
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">
+                <i class="fas fa-list"></i>
+                <span>All Recipes</span>
+            </button>
+            <button class="filter-tab" data-filter="collections">
+                <i class="fas fa-folder"></i>
+                <span>Collections</span>
+            </button>
+            <button class="filter-tab" data-filter="recent">
+                <i class="fas fa-clock"></i>
+                <span>Recent</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Saved Recipes Section -->
+    <section class="saved-recipes-section">
+        <div class="section-header">
+            <h2><i class="fas fa-bookmark"></i> Your Saved Recipes</h2>
+            <p>Keep your favorite recipes organized and easily accessible</p>
+        </div>
+
+        <div class="recipes-grid" id="saved-recipes-list">
+            <!-- Saved recipes will be loaded dynamically by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section class="collections-section" style="display: none;">
+        <div class="section-header">
+            <h2><i class="fas fa-folder"></i> Recipe Collections</h2>
+            <p>Organize your recipes into themed collections</p>
+        </div>
+
+        <div class="collections-grid">
+            <!-- Collection Card 1 -->
+            <div class="collection-card">
+                <div class="collection-header">
+                    <div class="collection-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Indian Favorites</h3>
+                    <p>Traditional Indian recipes</p>
+                </div>
+                <div class="collection-preview">
+                    <img src="../images/recipes/alu-dam-biriyani.webp" alt="Preview">
+                    <img src="../images/recipes/butter-chicken.webp" alt="Preview">
+                    <img src="../images/recipes/dal-makhani.webp" alt="Preview">
+                </div>
+                <div class="collection-stats">
+                    <span><i class="fas fa-bookmark"></i> 8 recipes</span>
+                </div>
+            </div>
+
+            <!-- Collection Card 2 -->
+            <div class="collection-card">
+                <div class="collection-header">
+                    <div class="collection-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Healthy Meals</h3>
+                    <p>Nutritious and balanced recipes</p>
+                </div>
+                <div class="collection-preview">
+                    <img src="../images/recipes/quinoa-salad.webp" alt="Preview">
+                    <img src="../images/recipes/grilled-salmon.webp" alt="Preview">
+                    <img src="../images/recipes/veggie-bowl.webp" alt="Preview">
+                </div>
+                <div class="collection-stats">
+                    <span><i class="fas fa-bookmark"></i> 12 recipes</span>
+                </div>
+            </div>
+            
+            <div class="empty-state hidden" id="empty-collections">
+                <img src="../images/icons/empty-collections-icon.png" alt="No Collections">
+                <h3>No Collections Yet</h3>
+                <p>Create collections to organize your recipes</p>
+                <button class="create-button" id="create-collection">Create Collection</button>
+            </div>
+        </div>
+    </section>
+</main>
+                            <span class="recipe-rating">4.9 ★</span>
+                        </div>
+                        <p class="recipe-chef">By Chef Ranveer Brar</p>
+                    </div>
+                    <button class="remove-button">
+                        <img src="images/icons/remove-icon.png" alt="Remove">
+                    </button>
+                </div>
+            </div>
+
+<!-- Footer Navigation -->
+<footer class="app-footer">
+    <nav class="main-nav">
+        <a href="home.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="scan.html" class="nav-item">
+            <i class="fas fa-camera"></i>
+            <span>Scan</span>
+        </a>
+        <a href="saved.html" class="nav-item active">
+            <i class="fas fa-bookmark"></i>
+            <span>Saved</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Account</span>
+        </a>
+        <a href="explore.html" class="nav-item">
+            <i class="fas fa-search"></i>
+            <span>Explore</span>
+        </a>
+    </nav>
+</footer>
+</div>
+
+<script>
+// Initialize saved recipes page
+function initSavedPage() {
+    console.log('Saved recipes page initialized');
+    
+    const tabButtons = document.querySelectorAll('.filter-tab');
+    const tabContents = document.querySelectorAll('.saved-recipes-section, .collections-section');
+    const savedRecipeItems = document.querySelectorAll('.recipe-card');
+    const collectionItems = document.querySelectorAll('.collection-card');
+    const exploreButton = document.getElementById('explore-recipes');
+    const createCollectionButton = document.getElementById('create-collection');
+    
+    // Check if there are saved recipes and collections
+    checkSavedItems();
+    
+    // Handle filter tab buttons
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            const filter = button.getAttribute('data-filter');
+            
+            // Show/hide sections based on filter
+            if (filter === 'all') {
+                document.querySelector('.saved-recipes-section').style.display = 'block';
+                document.querySelector('.collections-section').style.display = 'none';
+            } else if (filter === 'collections') {
+                document.querySelector('.saved-recipes-section').style.display = 'none';
+                document.querySelector('.collections-section').style.display = 'block';
+            } else if (filter === 'recent') {
+                document.querySelector('.saved-recipes-section').style.display = 'block';
+                document.querySelector('.collections-section').style.display = 'none';
+                // Could add additional filtering logic here for recent items
+            }
+        });
+    });
+    
+    // Handle recipe items
+    savedRecipeItems.forEach(item => {
+        // Click on recipe item
+        item.addEventListener('click', (e) => {
+            // Check if the click was on the remove button
+            if (!e.target.closest('.remove-button')) {
+                const recipeId = item.getAttribute('data-recipe');
+                Router.navigateTo('recipe', { id: recipeId });
+            }
+        });
+        
+        // Remove button
+        const removeButton = item.querySelector('.remove-button');
+        removeButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent recipe item click
+            
+            // In a real app, this would remove from saved storage
+            item.classList.add('removing');
+            setTimeout(() => {
+                item.remove();
+                checkSavedItems();
+                showToast('Recipe removed from saved items');
+            }, 300);
+        });
+    });
+    
+    // Handle collection items
+    collectionItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const collectionId = item.getAttribute('data-collection');
+            Router.navigateTo('collection', { id: collectionId });
+        });
+    });
+    
+    // Explore button
+    if (exploreButton) {
+        exploreButton.addEventListener('click', () => {
+            Router.navigateTo('home');
+        });
+    }
+    
+    // Create collection button
+    if (createCollectionButton) {
+        createCollectionButton.addEventListener('click', () => {
+            // In a real app, this would show collection creation UI
+            showToast('Collection creation would appear here!');
+        });
+    }
+    
+    // Bottom navigation
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = item.getAttribute('href');
+            // Direct navigation using window.location for simplicity
+            window.location.href = href;
+        });
+    });
+    
+    // Function to check if there are saved items
+    function checkSavedItems() {
+        const savedRecipesList = document.getElementById('saved-recipes-list');
+        const emptyRecipes = document.getElementById('empty-recipes');
+        const collectionsList = document.querySelector('.collections-grid');
+        const emptyCollections = document.getElementById('empty-collections');
+        
+        // Check recipes
+        if (savedRecipesList.children.length === 0) {
+            savedRecipesList.style.display = 'none';
+            emptyRecipes.style.display = 'flex';
+        } else {
+            savedRecipesList.style.display = 'grid';
+            emptyRecipes.style.display = 'none';
+        }
+        
+        // Check collections
+        if (collectionsList && collectionsList.children.length === 0) {
+            collectionsList.style.display = 'none';
+            emptyCollections.style.display = 'flex';
+        } else if (collectionsList) {
+            collectionsList.style.display = 'grid';
+            emptyCollections.style.display = 'none';
+        }
+    }
+    
+    // Function to show toast message
+    function showToast(message) {
+        // Check if toast container exists, create if not
+        let toastContainer = document.querySelector('.toast-container');
+        if (!toastContainer) {
+            toastContainer = document.createElement('div');
+            toastContainer.className = 'toast-container';
+            document.body.appendChild(toastContainer);
+        }
+        
+        // Create toast
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = message;
+        toastContainer.appendChild(toast);
+        
+        // Show toast
+        setTimeout(() => {
+            toast.classList.add('show');
+        }, 10);
+
+
+ 
+        
+        // Hide and remove toast
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        }, 3000);
+    }
+}
+
+// Fallback Router object to prevent errors if main router isn't loaded
+if (typeof Router === 'undefined') {
+    window.Router = {
+        navigateTo: function(page, params) {
+            console.log('Router not loaded. Would navigate to:', page, params);
+            // Fallback navigation using window.location
+            if (page === 'home') {
+                window.location.href = '../pages/home.html';
+            } else if (page === 'collection') {
+                window.location.href = '../pages/collection.html';
+            } else {
+                window.location.href = '../pages/' + page + '.html';
+            }
+        }
+    };
+}
+
+// Initialize the page when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initSavedPage();
+});
+
+</script>
+
+</main>
+
+<!-- Footer Navigation -->
+<footer class="app-footer">
+    <nav class="main-nav">
+      <a href="home.html" class="nav-item"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="scan.html" class="nav-item"><i class="fas fa-camera"></i><span>Scan</span></a>
+      <a href="saved.html" class="nav-item active"><i class="fas fa-bookmark"></i><span>Saved</span></a>
+      <a href="profile.html" class="nav-item"><i class="fas fa-user"></i><span>Account</span></a>
+      <a href="explore.html" class="nav-item"><i class="fas fa-search"></i><span>Explore</span></a>
+    </nav>
+</footer>
+
+<!-- Saved page script -->
+<script src="../js/global-profile.js"></script>
+<script src="../js/saved.js"></script>
+</body>
+</html>
