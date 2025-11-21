@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaChef - Onboarding</title>
+    
+    <!-- Main organized CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="../css/pages/onboarding.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div id="onboarding-wrapper">
+    <div class="onboarding-container">
+        <div class="onboarding-header">
+            <div class="onboarding-logo-container">
+                <img src="../images/Logo (2).webp" alt="InstaChef" class="onboarding-logo">
+            </div>
+            <h2 class="onboarding-title">How it Works</h2>
+            <p class="onboarding-subtitle">Snap, Cook magic on a plate!</p>
+        </div>
+
+        <div class="onboarding-steps" id="onboarding-steps">
+            <button class="step-indicator" data-step="1">1</button>
+            <button class="step-indicator" data-step="2">2</button>
+            <button class="step-indicator" data-step="3">3</button>
+        </div>
+
+        <div class="onboarding-content" id="onboarding-content">
+            <!-- Step content will be injected here -->
+        </div>
+
+        <div class="onboarding-footer">
+            <button id="skip-btn" class="onboarding-btn-skip">Skip</button>
+            <div class="onboarding-footer-right">
+                <button id="back-btn" class="onboarding-btn-skip hidden">← Back</button>
+                <button id="next-btn" class="onboarding-btn">Next →</button>
+                <button id="finish-btn" class="onboarding-btn hidden">Get Started →</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast container for notifications -->
+<div class="toast-container"></div>
+
+<script>
+/**
+ * Standalone onboarding page without router dependency
+ */
+function initPage() {
+    console.log('Onboarding page initialized - standalone version');
+}
+
+// Global variables and state for onboarding
+const onboardingState = {
+    currentStep: 1,
+    totalSteps: 3,
+    steps: [
+        {
+            img: '../images/scan.webp',
+            title: 'Snap Your Food',
+            desc: 'Capture a photo of the dish you want to cook or share.'
+        },
+        {
+            img: '../images/ai analyse.webp',
+            title: 'Scan & Generate',
+            desc: 'Let AI scan your photo and generate a delicious recipe.'
+        },
+        {
+            img: '../images/save.webp',
+            title: 'Save & Explore',
+            desc: 'Save your creations, share with friends, and discover new dishes.'
+        }
+    ]
+};
+
+// Render function
+function renderOnboardingStep(step) {
+    console.log('Rendering onboarding step:', step);
+    
+    const stepsBar = document.getElementById('onboarding-steps');
+    const content = document.getElementById('onboarding-content');
+    const backBtn = document.getElementById('back-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const finishBtn = document.getElementById('finish-btn');
+    
+    if (!stepsBar || !content) {
+        console.error('Could not find required onboarding elements');
+        return;
+    }
+    
+    // Update step indicators
+    Array.from(stepsBar.children).forEach((el, idx) => {
+        // Only set the current step as active
+        el.classList.toggle('active', idx === (step - 1));
+    });
+
+    // Render content for current step
+    const s = onboardingState.steps[step-1];
+    content.innerHTML = `
+        <div class="onboarding-card onboarding-step-card">
+            <img src="${s.img}" alt="${s.title}">
+            <h3>${s.title}</h3>
+            <p>${s.desc}</p>
+        </div>
+    `;
+
+    // Show/hide navigation buttons
+    if (backBtn) backBtn.classList.toggle('hidden', step <= 1);
+    
+    // Update Next button text for the last step
+    if (step === onboardingState.totalSteps) {
+        if (nextBtn) nextBtn.textContent = "Get Started →";
+    } else {
+        if (nextBtn) nextBtn.textContent = "Next →";
+    }
+    
+    // Hide finish button completely as we're using Next for all steps
+    if (finishBtn) finishBtn.classList.add('hidden');
+}
+
+function completeOnboarding() {
+    // In standalone version, just navigate to login page
+    window.location.href = 'login.html';
+}
+
+// Navigate to specific step
+function goToStep(step) {
+    if (step >= 1 && step <= onboardingState.totalSteps) {
+        onboardingState.currentStep = step;
+        renderOnboardingStep(step);
+        console.log('Navigated to step:', step);
+    }
+}
+
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Setting up onboarding buttons and initial render');
+    
+    const skipBtn = document.getElementById('skip-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const backBtn = document.getElementById('back-btn');
+    const stepIndicators = document.querySelectorAll('.step-indicator');
+    
+    if (skipBtn) {
+        skipBtn.addEventListener('click', function() {
+            console.log('Skip button clicked');
+            completeOnboarding();
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            console.log('Next button clicked, current step:', onboardingState.currentStep);
+            if (onboardingState.currentStep < onboardingState.totalSteps) {
+                onboardingState.currentStep++;
+                renderOnboardingStep(onboardingState.currentStep);
+                console.log('Advanced to step:', onboardingState.currentStep);
+            } else {
+                // On last step, clicking Next completes onboarding
+                console.log('Final step Next button clicked, completing onboarding');
+                completeOnboarding();
+            }
+        });
+    }
+    
+    if (backBtn) {
+        backBtn.addEventListener('click', function() {
+            console.log('Back button clicked');
+            if (onboardingState.currentStep > 1) {
+                onboardingState.currentStep--;
+                renderOnboardingStep(onboardingState.currentStep);
+                console.log('Went back to step:', onboardingState.currentStep);
+            }
+        });
+    }
+    
+    // Set up event listeners for step indicators
+    if (stepIndicators && stepIndicators.length) {
+        stepIndicators.forEach(indicator => {
+            indicator.addEventListener('click', function() {
+                const stepNumber = parseInt(this.getAttribute('data-step'));
+                console.log('Step indicator clicked:', stepNumber);
+                goToStep(stepNumber);
+            });
+        });
+    }
+    
+    // Initial render
+    renderOnboardingStep(onboardingState.currentStep);
+});
+</script>

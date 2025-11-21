@@ -1,0 +1,36 @@
+/**
+ * Critical CSS for InstaChef App - Above-the-fold styles only
+ * This should be inlined in HTML head for fastest loading
+ */
+
+/* Essential reset and variables */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary-color:#7aba40;--secondary-color:#f8f8f8;--text-color:#333;--accent-color:#f37b20;--white:#fff;--shadow:0 2px 10px rgba(0,0,0,0.1)}
+
+/* Essential body and app structure */
+body{font-family:'Segoe UI',Roboto,Arial,sans-serif;color:var(--text-color);background-color:var(--secondary-color);line-height:1.6}
+.app-container{max-width:600px;margin:0 auto;height:100vh;position:relative;overflow:hidden;background-color:white}
+
+/* Critical header styles */
+.app-header{display:flex;justify-content:space-between;align-items:center;padding:15px;background-color:white;border-bottom:1px solid #f0f0f0}
+.header-logo{height:40px}
+.header-logo img{height:100%;width:auto}
+
+/* Essential splash screen */
+.splash-screen{position:fixed;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;background-color:white;z-index:9999}
+.splash-logo{max-width:200px;height:auto;margin-bottom:20px}
+
+/* Essential navigation */
+.app-footer{position:fixed;bottom:0;left:0;width:100%;background-color:white;box-shadow:0 -2px 8px rgba(0,0,0,0.1);z-index:100}
+.main-nav{display:flex;justify-content:space-around;align-items:center;padding:10px 0;height:60px}
+.nav-item{display:flex;flex-direction:column;align-items:center;color:#666;text-decoration:none;font-size:12px;padding:8px 0;flex:1}
+.nav-item i{font-size:20px;margin-bottom:4px}
+.nav-item.active{color:var(--primary-color)}
+
+/* Disable selection and default cursor */
+*{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
+a,button,[role="button"]{cursor:pointer}
+input,textarea{-webkit-user-select:text;-khtml-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+/* Hide non-critical content initially */
+.hidden{display:none!important}

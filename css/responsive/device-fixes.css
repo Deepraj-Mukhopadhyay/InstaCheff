@@ -1,0 +1,89 @@
+/**
+ * Device-specific fixes and enhancements for InstaChef App
+ * Handles edge cases and device-specific quirks
+ */
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    /* Fix for iOS Safari 100vh issue */
+    .app-container, 
+    .splash-screen,
+    .full-height {
+        height: -webkit-fill-available;
+    }
+    
+    /* Fix for iOS form elements */
+    input, select, textarea {
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 5px;
+    }
+    
+    /* Fix for iOS momentum scrolling */
+    .scrollable {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Fix for iOS button styling */
+    button {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+}
+
+/* Android Chrome specific fixes */
+@supports not (-webkit-touch-callout: none) {
+    /* Fix for Android Chrome input zoom */
+    input, select, textarea {
+        font-size: 16px; /* Prevent zoom on Android */
+    }
+    
+    /* Fix for Android Chrome sticky hover states */
+    .button:hover {
+        background-color: var(--primary-color);
+    }
+    
+    @media (hover: none) {
+        .button:hover {
+            background-color: var(--primary-color);
+            transform: none;
+        }
+    }
+}
+
+/* High DPI / Retina display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Optimize images for high DPI displays */
+    .recipe-image img,
+    .header-logo,
+    .splash-logo {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: optimize-contrast;
+    }
+}
+
+/* Dark mode media query preparation */
+@media (prefers-color-scheme: dark) {
+    /* Currently maintaining light theme only */
+    /* Future dark mode implementations would go here */
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .button {
+        border: 2px solid currentColor;
+    }
+    
+    .card {
+        border: 1px solid var(--text-color);
+    }
+}

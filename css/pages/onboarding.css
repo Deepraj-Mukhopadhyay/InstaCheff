@@ -1,0 +1,883 @@
+/**
+ * Onboarding Page Styles for InstaChef App
+ */
+
+.onboarding-container {
+    padding: 20px;
+    max-width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Allow vertical scrolling like login page */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.onboarding-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 30px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.onboarding-steps::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    background-color: #eee;
+    z-index: 0;
+}
+
+.step-indicator {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* Current active step - Green background with white text to match image */
+.step-indicator.active {
+    background-color: #7aba40; /* Changed to match the green in the image */
+    color: white;
+    box-shadow: 0 4px 8px rgba(122, 186, 64, 0.4);
+    transform: scale(1.1);
+}
+
+/* Hover effect for step indicators */
+.step-indicator:hover:not(.active) {
+    background-color: #e5e5e5;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Active state when pressed */
+.step-indicator:active {
+    transform: scale(0.95);
+}
+
+/* We're not using completed steps as per user request */
+.step-indicator.completed {
+    display: none; /* Hide this styling as we're not using it */
+}
+
+.onboarding-header {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.onboarding-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.onboarding-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.onboarding-logo-container {
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+}
+
+.onboarding-logo {
+    width: 170px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    animation: fadeInLogo 1s ease;
+}
+
+@keyframes fadeInLogo {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.onboarding-content {
+    flex-grow: 1;
+    padding: 20px 0;
+}
+
+.onboarding-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.onboarding-card {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+/* Specific styles for single step card in multi-step flow */
+.onboarding-step-card {
+    width: 90%;
+    max-width: 450px;
+    padding: 35px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    text-align: center;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s;
+    backdrop-filter: blur(5px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.onboarding-card img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+.onboarding-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.onboarding-card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.onboarding-slide.active {
+    transform: translateX(0);
+}
+
+.onboarding-slide.prev {
+    transform: translateX(-100%);
+}
+
+.onboarding-slide.next {
+    transform: translateX(100%);
+}
+
+.slide-image {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 8px 15px rgba(0,0,0,0.2));
+    transition: transform 0.5s ease, filter 0.5s ease;
+    animation: floatIn 0.8s ease-out;
+}
+
+@keyframes floatIn {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.onboarding-step-card:hover .slide-image {
+    transform: translateY(-10px);
+    filter: drop-shadow(0 15px 20px rgba(0,0,0,0.25));
+}
+
+.slide-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.slide-description {
+    font-size: 16px;
+    color: #666;
+    max-width: 400px;
+    line-height: 1.5;
+}
+
+.onboarding-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.onboarding-dots {
+    display: flex;
+    gap: 8px;
+    padding: 5px 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.onboarding-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ddd;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.onboarding-dot.active {
+    background-color: #FF6B00;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+}
+
+.onboarding-btn {
+    background-color: #FF6B00;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.onboarding-btn:hover {
+    background-color: #e86200;
+    box-shadow: 0 0 25px rgba(255, 107, 0, 0.7);
+    transform: translateY(-2px);
+}
+
+.onboarding-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.onboarding-btn:hover::before {
+    left: 100%;
+}
+
+.onboarding-btn-skip {
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #666;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.onboarding-btn-skip:hover {
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.onboarding-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 15px 25px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Add a container for the right side buttons to keep them aligned */
+.onboarding-footer-right {
+    display: flex;
+    gap: 10px;
+}
+
+/* Fix for multiple buttons in footer */
+.onboarding-footer #skip-btn {
+    margin-right: auto;
+}
+
+.button {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: #FF6B00;
+    color: white;
+    border: none;
+}
+
+.button:hover {
+    background-color: #e86200;
+}
+
+.button.white {
+    background-color: transparent;
+    color: #666;
+    border: none;
+}
+
+.button.white:hover {
+    color: #333;
+}
+
+/* Responsive styles */
+@media screen and (min-width: 768px) {
+    .onboarding-logo-container {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .onboarding-logo {
+        width: 200px;
+    }
+    
+    .onboarding-card {
+        width: calc(33.33% - 20px);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .onboarding-logo-container {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .onboarding-logo {
+        width: 120px;
+    }
+    
+    .onboarding-title {
+        font-size: 20px;
+    }
+    
+    .onboarding-subtitle {
+        font-size: 14px;
+    }
+    
+    .onboarding-card {
+        padding: 15px;
+    }
+    
+    .onboarding-card img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .slide-image {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 20px;
+    }
+    
+    .slide-title {
+        font-size: 20px;
+    }
+    
+    .slide-description {
+        font-size: 14px;
+    }
+}
+
+/* Media query for landscape orientation (desktop/landscape mobile) */
+@media screen and (orientation: landscape) {
+    .onboarding-container {
+        flex-direction: row;
+        align-items: center; /* Vertically center elements */
+        justify-content: center; /* Horizontally center elements */
+        gap: 30px;
+        padding: 20px;
+        height: 100vh; /* Full viewport height to center vertically */
+    }
+
+    .onboarding-header {
+        flex: 1 1 30%;
+        padding: 20px;
+        margin-bottom: 0;
+    }
+
+    .onboarding-logo-container {
+        margin-bottom: 20px;
+    }
+
+    .onboarding-content {
+        flex: 1 1 70%;
+        padding: 20px;
+    }
+
+    .onboarding-step-card {
+        max-width: none;
+        width: 100%;
+    }
+
+    .onboarding-footer {
+        flex: 1 1 70%;
+        padding: 20px;
+        margin: 20px auto 0;
+    }
+    
+    /* Orange button styles for landscape mode */
+    .onboarding-btn {
+        background-color: #FF6B00;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .onboarding-btn:hover {
+        background-color: #e86200;
+        box-shadow: 0 0 25px rgba(255, 107, 0, 0.7);
+        transform: translateY(-2px);
+    }
+    
+    .onboarding-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: 0.5s;
+    }
+    
+    .onboarding-btn:hover::before {
+        left: 100%;
+    }
+    
+    .onboarding-btn-skip {
+        background-color: rgba(255, 255, 255, 0.85);
+        color: #666;
+        padding: 12px 25px;
+        border: 2px solid #FF6B00;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 107, 0, 0.4);
+    }
+    
+    .onboarding-btn-skip:hover {
+        color: #333;
+        background-color: rgba(255, 255, 255, 0.95);
+        border: 2px solid #FF6B00;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 107, 0, 0.6);
+        transform: translateY(-2px);
+    }
+}
+
+/* Media query for larger screens in landscape orientation */
+@media screen and (orientation: landscape) and (min-width: 1024px) {
+    .onboarding-container {
+        padding: 30px 50px;
+    }
+
+    .onboarding-header {
+        padding-left: 30px;
+    }
+
+    .onboarding-logo {
+        width: 120px;
+    }
+
+    .onboarding-step-card {
+        padding: 40px;
+    }
+
+    /* Orange button styles for large landscape screens */
+    .onboarding-btn {
+        background-color: #FF6B00;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 25px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .onboarding-btn:hover {
+        background-color: #e86200;
+        box-shadow: 0 0 25px rgba(255, 107, 0, 0.7);
+        transform: translateY(-2px);
+    }
+    
+    .onboarding-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: 0.5s;
+    }
+    
+    .onboarding-btn:hover::before {
+        left: 100%;
+    }
+    
+    .onboarding-btn-skip {
+        background-color: rgba(255, 255, 255, 0.85);
+        color: #666;
+        padding: 15px 30px;
+        border: 2px solid #FF6B00;
+        border-radius: 25px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 107, 0, 0.4);
+    }
+    
+    .onboarding-btn-skip:hover {
+        color: #333;
+        background-color: rgba(255, 255, 255, 0.95);
+        border: 2px solid #FF6B00;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 107, 0, 0.6);
+        transform: translateY(-2px);
+    }
+
+    .onboarding-dot {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+/* Orientation-specific styles for step images and logo */
+/* Portrait orientation */
+@media screen and (orientation: portrait) {
+    /* Allow scrolling in portrait mode */
+    .onboarding-container {
+        min-height: 100vh;
+        padding: 10px 10px 100px;
+        justify-content: flex-start;
+    }
+    
+    .onboarding-header {
+        margin-bottom: 15px;
+        padding: 15px;
+    }
+    
+    .onboarding-logo-container {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 10px;
+    }
+    
+    body {
+        overflow-x: hidden; /* Change to overflow-x to prevent horizontal scrolling */
+    }
+    
+    #onboarding-wrapper {
+        height: 100vh; /* Keep height as is */
+        overflow: visible; /* Change to visible to allow scrolling */
+    }
+    
+    .onboarding-title {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+    
+    .onboarding-subtitle {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    
+    .onboarding-steps {
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+    
+    .step-indicator {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .onboarding-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .onboarding-card img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .onboarding-step-card {
+        padding: 20px;
+        min-height: auto;
+        max-height: 250px;
+    }
+    
+    .onboarding-card h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+    
+    .onboarding-card p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    /* Proper footer section for portrait view */
+    .onboarding-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(255, 107, 0, 0.2);
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        padding: 15px 20px 20px;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+    }
+    
+    .onboarding-footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 4px;
+        background: #4CAF50;
+        border-radius: 2px;
+        margin-top: 8px;
+    }
+    
+    /* Portrait mode buttons with landscape colors and effects */
+    .onboarding-btn {
+        background-color: #FF6B00;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 25px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .onboarding-btn:hover {
+        background-color: #e86200;
+        box-shadow: 0 0 25px rgba(255, 107, 0, 0.7);
+        transform: translateY(-2px);
+    }
+    
+    .onboarding-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: 0.5s;
+    }
+    
+    .onboarding-btn:hover::before {
+        left: 100%;
+    }
+    
+    .onboarding-btn-skip {
+        background-color: rgba(255, 255, 255, 0.85);
+        color: #666;
+        padding: 12px 24px;
+        border: 2px solid #FF6B00;
+        border-radius: 25px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 107, 0, 0.4);
+    }
+    
+    .onboarding-btn-skip:hover {
+        color: #333;
+        background-color: rgba(255, 255, 255, 0.95);
+        border: 2px solid #FF6B00;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 107, 0, 0.6);
+        transform: translateY(-2px);
+    }
+    
+    /* Allow scrolling as needed */
+    body {
+        overflow-x: hidden;
+    }
+    
+    #onboarding-wrapper {
+        height: 100vh;
+        overflow: visible;
+    }
+    
+    /* Compact step indicator for small screens */
+    @media (max-height: 700px) {
+        .onboarding-header {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .onboarding-logo-container {
+            width: 110px;
+            height: 110px;
+        }
+        
+        .onboarding-logo {
+            width: 90px;
+        }
+        
+        .onboarding-title {
+            font-size: 18px;
+        }
+        
+        .onboarding-subtitle {
+            font-size: 13px;
+        }
+        
+        .onboarding-card img {
+            width: 120px;
+            height: 120px;
+        }
+        
+        .onboarding-step-card {
+            padding: 15px;
+            max-height: 200px;
+        }
+        
+        .step-indicator {
+            width: 30px;
+            height: 30px;
+            font-size: 12px;
+        }
+    }
+}
+
+/* Landscape orientation */
+@media screen and (orientation: landscape) {
+    .onboarding-card img {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .onboarding-logo-container {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .onboarding-logo {
+        width: 160px;
+    }
+    
+    /* For very small height screens in landscape */
+    @media (max-height: 500px) {
+        .onboarding-card img {
+            width: 150px;
+            height: 150px;
+        }
+        
+        .onboarding-logo-container {
+            width: 160px;
+            height: 160px;
+        }
+        
+        .onboarding-logo {
+            width: 140px;
+        }
+    }
+}
+
+/* Additional 3-step onboarding optimizations */
+.step-indicator{width:60px;height:60px;font-size:20px;line-height:60px;background-color:rgba(255,255,255,0.85);box-shadow:0 3px 8px rgba(0,0,0,0.1);border:2px solid transparent;transition:all 0.3s ease}
+.step-indicator.active{background-color:#4CAF50;color:white;border:2px solid #2E7D32;box-shadow:0 0 12px rgba(76,175,80,0.6);animation:stepActivation 0.4s ease}
+@keyframes stepActivation{0%{transform:scale(0.8)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+.onboarding-step-card{min-height:300px;background-color:rgba(255,255,255,0.95);backdrop-filter:blur(5px);box-shadow:0 10px 25px rgba(0,0,0,0.12);border-radius:20px;padding:30px;transition:transform 0.3s ease,box-shadow 0.3s ease}
+.onboarding-step-card:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,0.15)}
+@media (max-height:600px){.onboarding-logo-container{width:120px;height:120px;margin-bottom:10px}.onboarding-logo{width:100px}.onboarding-header{margin-bottom:15px}.onboarding-step-card{padding:20px;min-height:auto}}

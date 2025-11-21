@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaChef - Explore</title>
+    
+    <!-- Main organized CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="../css/pages/explore.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-logo-container">
+      <img src="../images/Logo (2).webp" alt="InstaChef" class="header-logo">
+    </div>
+    <button class="profile-button">
+      <img src="../images/user-icon.png" alt="Profile">
+    </button>
+  </header>
+
+  <!-- Main Content -->
+  <main class="explore-container">
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search recipes, ingredients, chefs...">
+      </div>
+      <button class="filter-button">
+        <i class="fas fa-filter"></i>
+      </button>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+      <h2>Categories</h2>
+      <div class="categories-grid">
+        <div class="category-item">
+          <img src="../images/categories/breakfast.jpg" alt="Breakfast">
+          <h3>Breakfast</h3>
+        </div>
+        <div class="category-item">
+          <img src="../images/categories/lunch.jpg" alt="Lunch">
+          <h3>Lunch</h3>
+        </div>
+        <div class="category-item">
+          <img src="../images/categories/dinner.jpg" alt="Dinner">
+          <h3>Dinner</h3>
+        </div>
+        <div class="category-item">
+          <img src="../images/categories/dessert.jpg" alt="Dessert">
+          <h3>Dessert</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trending Section -->
+    <section class="trending-section">
+      <h2>Trending Now</h2>
+      <div class="trending-grid">
+        <div class="recipe-card">
+          <div class="recipe-image">
+            <img src="../images/recipes/trending-1.jpg" alt="Trending Recipe">
+          </div>
+          <div class="recipe-info">
+            <h3>Spicy Chicken Curry</h3>
+            <p>45 min • 4.8★</p>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image">
+            <img src="../images/recipes/trending-2.jpg" alt="Trending Recipe">
+          </div>
+          <div class="recipe-info">
+            <h3>Vegetable Stir Fry</h3>
+            <p>25 min • 4.6★</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Chefs Section -->
+    <section class="chefs-section">
+      <h2>Popular Chefs</h2>
+      <div class="chefs-list">
+        <div class="chef-item">
+          <img src="../images/chefs/chef-1.jpg" alt="Chef">
+          <div class="chef-info">
+            <h3>Chef Maria</h3>
+            <p>Italian Cuisine</p>
+          </div>
+          <button class="follow-btn">Follow</button>
+        </div>
+        <div class="chef-item">
+          <img src="../images/chefs/chef-2.jpg" alt="Chef">
+          <div class="chef-info">
+            <h3>Chef Raj</h3>
+            <p>Indian Cuisine</p>
+          </div>
+          <button class="follow-btn">Follow</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Navigation -->
+  <footer class="app-footer">
+    <nav class="main-nav">
+      <a href="home.html" class="nav-item"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="scan.html" class="nav-item"><i class="fas fa-camera"></i><span>Scan</span></a>
+      <a href="saved.html" class="nav-item"><i class="fas fa-bookmark"></i><span>Saved</span></a>
+      <a href="profile.html" class="nav-item"><i class="fas fa-user"></i><span>Account</span></a>
+      <a href="explore.html" class="nav-item active"><i class="fas fa-search"></i><span>Explore</span></a>
+    </nav>
+  </footer>
+
+<script>
+// Initialize explore page
+function initExplorePage() {
+    console.log('Explore page initialized');
+    
+    const searchInput = document.querySelector('.search-bar input');
+    const filterButton = document.querySelector('.filter-button');
+    const categoryItems = document.querySelectorAll('.category-item');
+    const followButtons = document.querySelectorAll('.follow-btn');
+    
+    // Search functionality
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        console.log('Searching for:', searchTerm);
+        // Implement search logic here
+    });
+    
+    // Filter button
+    filterButton.addEventListener('click', () => {
+        console.log('Filter button clicked');
+        // Implement filter modal logic here
+    });
+    
+    // Category clicks
+    categoryItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            const categoryName = item.querySelector('h3').textContent;
+            console.log('Category clicked:', categoryName);
+            // Navigate to category page or filter results
+        });
+    });
+    
+    // Follow button functionality
+    followButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const chefName = btn.closest('.chef-item').querySelector('h3').textContent;
+            if (btn.textContent === 'Follow') {
+                btn.textContent = 'Following';
+                btn.classList.add('following');
+                console.log('Following:', chefName);
+            } else {
+                btn.textContent = 'Follow';
+                btn.classList.remove('following');
+                console.log('Unfollowed:', chefName);
+            }
+        });
+    });
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', initExplorePage);
+</script>
+
+<script src="../js/app.js"></script>
+<script src="../js/global-profile.js"></script>
+</body>
+</html>

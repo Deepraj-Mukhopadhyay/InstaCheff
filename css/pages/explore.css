@@ -1,0 +1,256 @@
+/**
+ * Explore Page Styles for InstaChef App
+ */
+
+.explore-container {
+    padding: 15px;
+    padding-bottom: 80px; /* Space at bottom for fixed footer */
+}
+
+/* Search Section */
+.search-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.search-bar {
+    position: relative;
+    flex: 1;
+}
+
+.search-bar i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-dark);
+    z-index: 1;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 1px solid var(--gray-medium);
+    border-radius: 25px;
+    font-size: 16px;
+    background-color: var(--gray-light);
+    margin-bottom: 0;
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: white;
+}
+
+.filter-button {
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--gray-medium);
+    border-radius: 25px;
+    background-color: var(--gray-light);
+    color: var(--gray-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Section Titles */
+.explore-container h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+/* Categories Section */
+.categories-section {
+    margin-bottom: 30px;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.category-item {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.category-item:hover {
+    transform: translateY(-2px);
+}
+
+.category-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.category-item h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+/* Trending Section */
+.trending-section {
+    margin-bottom: 30px;
+}
+
+.trending-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.trending-grid .recipe-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.trending-grid .recipe-card:hover {
+    transform: translateY(-2px);
+}
+
+.trending-grid .recipe-image {
+    width: 100%;
+    height: 120px;
+}
+
+.trending-grid .recipe-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.trending-grid .recipe-info {
+    padding: 12px;
+}
+
+.trending-grid .recipe-info h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.trending-grid .recipe-info p {
+    font-size: 12px;
+    color: var(--gray-dark);
+}
+
+/* Chefs Section */
+.chefs-section {
+    margin-bottom: 30px;
+}
+
+.chefs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chef-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: var(--shadow);
+}
+
+.chef-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.chef-info {
+    flex: 1;
+}
+
+.chef-info h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.chef-info p {
+    font-size: 14px;
+    color: var(--gray-dark);
+}
+
+.follow-btn {
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.follow-btn:hover {
+    background-color: #68a136;
+}
+
+.follow-btn.following {
+    background-color: var(--gray-medium);
+    color: var(--text-color);
+}
+
+/* Responsive Design */
+@media screen and (min-width: 768px) {
+    .categories-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .trending-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .trending-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-section {
+        flex-direction: column;
+    }
+    
+    .filter-button {
+        width: 100%;
+        height: 45px;
+    }
+}

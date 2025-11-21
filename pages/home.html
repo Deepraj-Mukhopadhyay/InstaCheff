@@ -1,0 +1,622 @@
+<!--
+  InstaChef - Home Page
+  
+  Copyright (c) 2025 Culinary Coders Team
+  Team: Deepraj Mukhopadhyay (Team Leader & Designer), Anant Kumar Thakur, 
+        Oishee Banerjee, Dipanjan Roy
+  
+  All Rights Reserved - Culinary Coders
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InstaChef - Home</title>
+  <!-- Main organized CSS -->
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- Home Page CSS -->
+  <link rel="stylesheet" href="../css/pages/home.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-logo-container">
+      <img src="../images/Logo (2).webp" alt="InstaChef" class="header-logo">
+    </div>
+    <button class="profile-button">
+      <img src="../images/user-icon.png" alt="Profile">
+    </button>
+  </header>
+
+  <!-- Main Content -->
+  <main class="home-container">
+    <!-- Today's Special -->
+    <section class="todays-special">
+      <h2>Today's Special</h2>
+      <div class="recipe-carousel todays-carousel">
+        <div class="recipe-card" data-recipe="Chicken Caprese">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Chicken Caprese.webp" alt="Chicken Caprese">
+            <button class="save-recipe-btn" data-recipe="Chicken Caprese">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Chicken Caprese</h3>
+          <p>Bruschetta style dish</p>
+        </div>
+        <div class="recipe-card" data-recipe="Spicy Garlic Noodles">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Spicy garlic Noodles.webp" alt="Spicy Garlic Noodles">
+            <button class="save-recipe-btn" data-recipe="Spicy Garlic Noodles">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Spicy Garlic Noodles</h3>
+          <p>Fresh noodles in sauce</p>
+        </div>
+        <div class="recipe-card" data-recipe="Avocado Toast">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Avocardo Toast.webp" alt="Avocado Toast">
+            <button class="save-recipe-btn" data-recipe="Avocado Toast">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Avocado Toast</h3>
+          <p>Creamy avocado mash</p>
+        </div>
+        <div class="recipe-card" data-recipe="Butter Paneer Masala">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Butter Paneer Masala.webp" alt="Butter Paneer Masala">
+            <button class="save-recipe-btn" data-recipe="Butter Paneer Masala">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Butter Paneer Masala</h3>
+          <p>Rich & creamy curry</p>
+        </div>
+        <div class="recipe-card" data-recipe="Chicken Burger">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Chicken Burger.webp" alt="Chicken Burger">
+            <button class="save-recipe-btn" data-recipe="Chicken Burger">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Chicken Burger</h3>
+          <p>Juicy grilled patty</p>
+        </div>
+        <div class="recipe-card" data-recipe="Chilli Chicken">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Chilli Chiken Gravy.webp" alt="Chilli Chicken Gravy">
+            <button class="save-recipe-btn" data-recipe="Chilli Chicken">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Chilli Chicken</h3>
+          <p>Spicy Indo-Chinese</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scan Banner -->
+    <section class="scan-banner">
+      <div class="scan-card">
+        <div class="scan-icon"><i class="fas fa-camera"></i></div>
+        <div class="scan-text"><h3>Snap Your Food & Discover Recipes!</h3></div>
+        <button class="scan-button" id="scan-button">Scan Dish</button>
+      </div>
+    </section>
+
+    <!-- Popular This Week -->
+    <section class="popular-recipes">
+      <h2>Popular This Week</h2>
+      <div class="recipe-carousel popular-carousel">
+        <div class="recipe-card" data-recipe="Pasta Carbonara">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Pasta Crbonara.webp" alt="Pasta Carbonara">
+            <button class="save-recipe-btn" data-recipe="Pasta Carbonara">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Pasta Carbonara</h3>
+          <p>Classic Italian pasta</p>
+        </div>
+        <div class="recipe-card" data-recipe="Shrimp Scampi">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Shrimp Scampi.webp" alt="Shrimp Scampi">
+            <button class="save-recipe-btn" data-recipe="Shrimp Scampi">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Shrimp Scampi</h3>
+          <p>Garlic butter shrimp</p>
+        </div>
+        <div class="recipe-card" data-recipe="Vegetarian Chili">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/vegetarian Chilli.webp" alt="Vegetarian Chili">
+            <button class="save-recipe-btn" data-recipe="Vegetarian Chili">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Vegetarian Chili</h3>
+          <p>Hearty bean stew</p>
+        </div>
+        <div class="recipe-card" data-recipe="Paneer Masala">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Butter Paneer Masala.webp" alt="Butter Paneer Masala">
+            <button class="save-recipe-btn" data-recipe="Paneer Masala">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Paneer Masala</h3>
+          <p>Creamy Indian curry</p>
+        </div>
+        <div class="recipe-card" data-recipe="Chilli Chicken">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Chilli Chiken Gravy.webp" alt="Chilli Chicken">
+            <button class="save-recipe-btn" data-recipe="Chilli Chicken">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Chilli Chicken</h3>
+          <p>Spicy chicken dish</p>
+        </div>
+        <div class="recipe-card" data-recipe="Chicken Burger">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Chicken Burger.webp" alt="Chicken Burger">
+            <button class="save-recipe-btn" data-recipe="Chicken Burger">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Chicken Burger</h3>
+          <p>Gourmet burger</p>
+        </div>
+        <div class="recipe-card" data-recipe="Avocado Toast">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Avocardo Toast.webp" alt="Avocado Toast">
+            <button class="save-recipe-btn" data-recipe="Avocado Toast">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Avocado Toast</h3>
+          <p>Healthy breakfast</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Famous Indian Curries -->
+    <section class="indian-curries">
+      <h2>🇮🇳 Famous Indian Curries</h2>
+      <div class="recipe-carousel indian-carousel">
+        <div class="recipe-card" data-recipe="Butter Chicken">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Butter Chicken.webp" alt="Butter Chicken">
+            <button class="save-recipe-btn" data-recipe="Butter Chicken">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Butter Chicken</h3>
+          <p>Creamy Butter Chicken curry</p>
+        </div>
+        <div class="recipe-card" data-recipe="Chicken Tikka Masala">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/CHicken tikka masala.webp" alt="Chicken Tikka Masala">
+            <button class="save-recipe-btn" data-recipe="Chicken Tikka Masala">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Chicken Tikka Masala</h3>
+          <p>Grilled chicken in spicy gravy</p>
+        </div>
+        <div class="recipe-card" data-recipe="Dal Makhani">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Dal Makhai.webp" alt="Dal Makhani">
+            <button class="save-recipe-btn" data-recipe="Dal Makhani">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Dal Makhani</h3>
+          <p>Rich black lentil curry</p>
+        </div>
+        <div class="recipe-card" data-recipe="Palak Paneer">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Palak paneer.webp" alt="Palak Paneer">
+            <button class="save-recipe-btn" data-recipe="Palak Paneer">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Palak Paneer</h3>
+          <p>Spinach cottage cheese curry</p>
+        </div>
+        <div class="recipe-card" data-recipe="Rajma Cury">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Rajma Cury.webp" alt="Rajma Cury">
+            <button class="save-recipe-btn" data-recipe="Rajma Cury">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Rajma Cury</h3>
+          <p>Kidney bean curry</p>
+        </div>
+        <div class="recipe-card" data-recipe="Rogan Josh">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Rogan Josh.webp" alt="Rogan Josh">
+            <button class="save-recipe-btn" data-recipe="Rogan Josh">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Rogan Josh</h3>
+          <p>Kashmiri lamb curry</p>
+        </div>
+        <div class="recipe-card" data-recipe="Chole">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Chole.webp" alt="Chole">
+            <button class="save-recipe-btn" data-recipe="Chole">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Chole</h3>
+          <p>Spicy chickpea curry</p>
+        </div>
+        <div class="recipe-card" data-recipe="Malai Kofta">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Malai Kofta.webp" alt="Malai Kofta">
+            <button class="save-recipe-btn" data-recipe="Malai Kofta">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Malai Kofta</h3>
+          <p>Cottage cheese balls in gravy</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Indian Street Food -->
+    <section class="street-food">
+      <h2>🍛 Iconic Street Food</h2>
+      <div class="recipe-carousel street-carousel">
+        <div class="recipe-card" data-recipe="Vada Pav">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Vada Pav.webp" alt="Vada Pav">
+            <button class="save-recipe-btn" data-recipe="Vada Pav">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Vada Pav</h3>
+          <p>Mumbai's favorite burger</p>
+        </div>
+        <div class="recipe-card" data-recipe="Pani Puri">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Pani Puri.webp" alt="Pani Puri">
+            <button class="save-recipe-btn" data-recipe="Pani Puri">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Pani Puri</h3>
+          <p>Crispy water-filled snack</p>
+        </div>
+        <div class="recipe-card" data-recipe="Bhel Puri">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Bhel Puri.webp" alt="Bhel Puri">
+            <button class="save-recipe-btn" data-recipe="Bhel Puri">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Bhel Puri</h3>
+          <p>Tangy puffed rice mix</p>
+        </div>
+        <div class="recipe-card" data-recipe="Samosa">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Samosa.webp" alt="Samosa">
+            <button class="save-recipe-btn" data-recipe="Samosa">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Samosa</h3>
+          <p>Crispy triangular pastry</p>
+        </div>
+        <div class="recipe-card" data-recipe="Masala Dosa">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Masala Dosa.webp" alt="Dosa">
+            <button class="save-recipe-btn" data-recipe="Masala Dosa">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Masala Dosa</h3>
+          <p>South Indian crispy crepe</p>
+        </div>
+        <div class="recipe-card" data-recipe="Pav Bhaji">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Pav Bhaji.webp" alt="Pav Bhaji">
+            <button class="save-recipe-btn" data-recipe="Pav Bhaji">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Pav Bhaji</h3>
+          <p>Spicy vegetable curry with bread</p>
+        </div>
+        <div class="recipe-card" data-recipe="Idli Sambhar">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Idli.webp" alt="Idli Sambhar">
+            <button class="save-recipe-btn" data-recipe="Idli Sambhar">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Idli Sambhar</h3>
+          <p>Steamed rice cakes with lentil soup</p>
+        </div>
+        <div class="recipe-card" data-recipe="Kachori">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Kachori.webp" alt="Kachori">
+            <button class="save-recipe-btn" data-recipe="Kachori">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Kachori</h3>
+          <p>Flaky stuffed pastry</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Indian Rice & Biryani -->
+    <section class="rice-dishes">
+      <h2>🍚 Aromatic Rice Dishes</h2>
+      <div class="recipe-carousel rice-carousel">
+        <div class="recipe-card" data-recipe="Chicken Biryani">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Chicken Biriyani.webp" alt="Chicken Biryani">
+            <button class="save-recipe-btn" data-recipe="Chicken Biryani">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Chicken Biryani</h3>
+          <p>Fragrant basmati rice with chicken</p>
+        </div>
+        <div class="recipe-card" data-recipe="Vegetable Biryani">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Vegetable Biriyani.webp" alt="Vegetable Biryani">
+            <button class="save-recipe-btn" data-recipe="Vegetable Biryani">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Vegetable Biryani</h3>
+          <p>Mixed vegetable aromatic rice</p>
+        </div>
+        <div class="recipe-card" data-recipe="Mutton Biryani">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Mutton Biriyani.webp" alt="Mutton Biryani">
+            <button class="save-recipe-btn" data-recipe="Mutton Biryani">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Mutton Biryani</h3>
+          <p>Tender goat meat with spiced rice</p>
+        </div>
+        <div class="recipe-card" data-recipe="Jeera Rice">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Jeera Rice.webp" alt="Jeera Rice">
+            <button class="save-recipe-btn" data-recipe="Jeera Rice">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Jeera Rice</h3>
+          <p>Cumin flavored basmati rice</p>
+        </div>
+        <div class="recipe-card" data-recipe="Paneer Pulao">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Paneer Pulao.webp" alt="Paneer Pulao">
+            <button class="save-recipe-btn" data-recipe="Paneer Pulao">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Paneer Pulao</h3>
+          <p>Cottage cheese fried rice</p>
+        </div>
+        <div class="recipe-card" data-recipe="Lemon Rice">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Lemon Rice.webp" alt="Lemon Rice">
+            <button class="save-recipe-btn" data-recipe="Lemon Rice">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Lemon Rice</h3>
+          <p>South Indian tangy rice</p>
+        </div>
+        <div class="recipe-card" data-recipe="Egg Biryani">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Egg Biriyani.webp" alt="Egg Biryani">
+            <button class="save-recipe-btn" data-recipe="Egg Biryani">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Egg Biryani</h3>
+          <p>Boiled eggs with spiced rice</p>
+        </div>
+        <div class="recipe-card" data-recipe="Coconut Rice">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Coconut Rice.webp" alt="Coconut Rice">
+            <button class="save-recipe-btn" data-recipe="Coconut Rice">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Coconut Rice</h3>
+          <p>Kerala style coconut-flavored rice</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Indian Sweets -->
+    <section class="indian-sweets">
+      <h2>🍮 Traditional Indian Sweets</h2>
+      <div class="recipe-carousel sweets-carousel">
+        <div class="recipe-card" data-recipe="Gulab Jamun">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Gulab Jamun.webp" alt="Gulab Jamun">
+            <button class="save-recipe-btn" data-recipe="Gulab Jamun">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Gulab Jamun</h3>
+          <p>Soft milk dumplings in syrup</p>
+        </div>
+        <div class="recipe-card" data-recipe="Rasgulla">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Rasgulla.webp" alt="Rasgulla">
+            <button class="save-recipe-btn" data-recipe="Rasgulla">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Rasgulla</h3>
+          <p>Spongy cottage cheese balls</p>
+        </div>
+        <div class="recipe-card" data-recipe="Jalebi">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Jalebi.webp" alt="Jalebi">
+            <button class="save-recipe-btn" data-recipe="Jalebi">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Jalebi</h3>
+          <p>Crispy spiral shaped sweet</p>
+        </div>
+        <div class="recipe-card" data-recipe="Rice Kheer">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Rice Kheer.webp" alt="Kheer">
+            <button class="save-recipe-btn" data-recipe="Rice Kheer">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Rice Kheer</h3>
+          <p>Creamy rice pudding</p>
+        </div>
+        <div class="recipe-card" data-recipe="Besan Laddu">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Besan Lddu.webp" alt="Laddu">
+            <button class="save-recipe-btn" data-recipe="Besan Laddu">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Besan Laddu</h3>
+          <p>Gram flour sweet balls</p>
+        </div>
+        <div class="recipe-card" data-recipe="Kaju Barfi">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Kaju Barfi.webp" alt="Barfi">
+            <button class="save-recipe-btn" data-recipe="Kaju Barfi">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Kaju Barfi</h3>
+          <p>Cashew nut fudge</p>
+        </div>
+        <div class="recipe-card" data-recipe="Kulfi">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Kulfi.webp" alt="Kulfi">
+            <button class="save-recipe-btn" data-recipe="Kulfi">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Kulfi</h3>
+          <p>Traditional Indian ice cream</p>
+        </div>
+        <div class="recipe-card" data-recipe="Sandesh">
+          <div class="recipe-image-container">
+            <img src="../images/Home page dishes/Sandesh.webp" alt="Sandesh">
+            <button class="save-recipe-btn" data-recipe="Sandesh">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <h3>Sandesh</h3>
+          <p>Bengali cottage cheese sweet</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Navigation -->
+  <footer class="app-footer">
+    <nav class="main-nav">
+      <a href="home.html" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="scan.html" class="nav-item"><i class="fas fa-camera"></i><span>Scan</span></a>
+      <a href="saved.html" class="nav-item"><i class="fas fa-bookmark"></i><span>Saved</span></a>
+      <a href="profile.html" class="nav-item"><i class="fas fa-user"></i><span>Account</span></a>
+      <a href="explore.html" class="nav-item"><i class="fas fa-search"></i><span>Explore</span></a>
+    </nav>
+  </footer>
+
+  <!-- Recipe Detail Modal/Page -->
+  <div id="recipe-detail" class="recipe-detail-page hidden">
+    <div class="recipe-detail-header">
+      <button id="back-button" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back</span>
+      </button>
+      <button class="save-recipe-btn">
+        <i class="fas fa-bookmark"></i>
+      </button>
+    </div>
+    
+    <div class="recipe-detail-content">
+      <!-- Large Dish Image -->
+      <div class="recipe-hero-image">
+        <img id="recipe-hero-img" src="" alt="Recipe Image">
+        <div class="recipe-overlay">
+          <h1 id="recipe-title">Recipe Name</h1>
+          <div class="recipe-meta">
+            <span class="cook-time"><i class="fas fa-clock"></i> <span id="cook-time">30 mins</span></span>
+            <span class="difficulty"><i class="fas fa-chart-line"></i> <span id="difficulty">Easy</span></span>
+            <span class="servings"><i class="fas fa-users"></i> <span id="servings">4 servings</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recipe Content -->
+      <div class="recipe-content-section">
+        <!-- Description -->
+        <div class="recipe-description">
+          <p id="recipe-description">Delicious recipe description will appear here...</p>
+        </div>
+
+        <!-- Ingredients -->
+        <div class="ingredients-section">
+          <h2><i class="fas fa-list"></i> Ingredients</h2>
+          <ul id="ingredients-list">
+            <!-- Ingredients will be populated here -->
+          </ul>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions-section">
+          <h2><i class="fas fa-utensils"></i> Cooking Instructions</h2>
+          <div id="instructions-list" class="instructions-steps">
+            <!-- Instructions will be populated here -->
+          </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="tips-section">
+          <h2><i class="fas fa-lightbulb"></i> Chef's Tips</h2>
+          <div id="chef-tips" class="tips-content">
+            <!-- Tips will be populated here -->
+          </div>
+        </div>
+
+        <!-- Nutrition Info -->
+        <div class="nutrition-section">
+          <h2><i class="fas fa-apple-alt"></i> Nutrition Information</h2>
+          <div class="nutrition-grid" id="nutrition-info">
+            <!-- Nutrition info will be populated here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Home page script -->
+  <script src="../js/global-profile.js"></script>
+  <script src="../js/home.js"></script>
+</body>
+</html>

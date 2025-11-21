@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaChef - Scan History</title>
+    
+    <!-- Main organized CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="../css/pages/scan-history.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="scan-history-header">
+        <button class="back-button" onclick="window.history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1>Scan History</h1>
+        <button class="clear-button" id="clear-history">
+            <i class="fas fa-trash"></i>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="scan-history-container">
+        <!-- History List -->
+        <section class="history-section">
+            <div class="history-list">
+                <!-- Recent Scan -->
+                <div class="history-item" onclick="window.location.href='scan-result.html'">
+                    <div class="item-image">
+                        <img src="../images/vegies.webp" alt="Spaghetti Bolognese">
+                    </div>
+                    <div class="item-content">
+                        <h3>Spaghetti Bolognese</h3>
+                        <p>Classic Italian pasta with meat sauce</p>
+                        <div class="item-meta">
+                            <span class="scan-time"><i class="fas fa-clock"></i> 2 hours ago</span>
+                            <span class="success-badge">Success</span>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="action-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- More History Items -->
+                <div class="history-item">
+                    <div class="item-image">
+                        <img src="../images/scan.webp" alt="Chicken Caprese">
+                    </div>
+                    <div class="item-content">
+                        <h3>Chicken Caprese</h3>
+                        <p>Grilled chicken with fresh mozzarella</p>
+                        <div class="item-meta">
+                            <span class="scan-time"><i class="fas fa-clock"></i> 1 day ago</span>
+                            <span class="success-badge">Success</span>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="action-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <div class="item-image">
+                        <img src="../images/save.webp" alt="Avocado Toast">
+                    </div>
+                    <div class="item-content">
+                        <h3>Avocado Toast</h3>
+                        <p>Fresh avocado on sourdough bread</p>
+                        <div class="item-meta">
+                            <span class="scan-time"><i class="fas fa-clock"></i> 3 days ago</span>
+                            <span class="success-badge">Success</span>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="action-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <div class="item-image">
+                        <div class="failed-scan">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                    </div>
+                    <div class="item-content">
+                        <h3>Scan Failed</h3>
+                        <p>Could not identify ingredients</p>
+                        <div class="item-meta">
+                            <span class="scan-time"><i class="fas fa-clock"></i> 1 week ago</span>
+                            <span class="failed-badge">Failed</span>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="action-btn retry-btn">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty State (hidden by default) -->
+            <div class="empty-state hidden" id="empty-state">
+                <div class="empty-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <h3>No Scan History</h3>
+                <p>Your scan history will appear here after you start scanning ingredients.</p>
+                <button class="button primary" onclick="window.location.href='scan.html'">
+                    <i class="fas fa-camera"></i> Start Scanning
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Navigation -->
+    <footer class="app-footer">
+        <nav class="main-nav">
+            <a href="home.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="scan.html" class="nav-item active">
+                <i class="fas fa-camera"></i>
+                <span>Scan</span>
+            </a>
+            <a href="saved.html" class="nav-item">
+                <i class="fas fa-bookmark"></i>
+                <span>Saved</span>
+            </a>
+            <a href="explore.html" class="nav-item">
+                <i class="fas fa-compass"></i>
+                <span>Explore</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </footer>
+
+    <script>
+        // Scan History functionality
+        class ScanHistory {
+            constructor() {
+                this.init();
+            }
+            
+            init() {
+                this.bindEvents();
+                console.log('Scan History page initialized');
+            }
+            
+            bindEvents() {
+                // Clear history button
+                document.getElementById('clear-history')?.addEventListener('click', () => this.clearHistory());
+                
+                // Retry failed scans
+                document.querySelectorAll('.retry-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.retryScan();
+                    });
+                });
+            }
+            
+            clearHistory() {
+                const confirmation = confirm('Are you sure you want to clear all scan history?');
+                if (confirmation) {
+                    document.querySelector('.history-list').classList.add('hidden');
+                    document.getElementById('empty-state').classList.remove('hidden');
+                    this.showToast('Scan history cleared', 'success');
+                }
+            }
+            
+            retryScan() {
+                this.showToast('Redirecting to scan page...', 'info');
+                setTimeout(() => {
+                    window.location.href = 'scan.html';
+                }, 1000);
+            }
+            
+            showToast(message, type = 'info') {
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
+                toast.textContent = message;
+                
+                document.body.appendChild(toast);
+                
+                setTimeout(() => toast.classList.add('show'), 100);
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => toast.remove(), 300);
+                }, 3000);
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new ScanHistory();
+        });
+    </script>
+</body>
+</html>

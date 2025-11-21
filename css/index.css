@@ -1,0 +1,10 @@
+/**
+ * Index/Splash Page CSS for InstaChef App
+ * Includes all styles needed for the splash screen
+ */
+
+/* Import main CSS */
+@import url('./main.css');
+
+/* Import splash page specific styles */
+@import url('./pages/splash-screen.css');

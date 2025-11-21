@@ -1,0 +1,532 @@
+/**
+ * Landscape orientation styles for InstaChef App
+ * Applied when device is in landscape mode
+ */
+
+@media screen and (max-width: 992px) and (orientation: landscape) {
+    /* Make content scrollable in landscape mode */
+    body {
+        overflow-y: auto;
+    }
+    
+    /* Adjust splash screen for landscape */
+    .splash-screen {
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 0;
+    }
+    
+    .splash-logo {
+        max-height: 40vh !important;
+        width: auto !important;
+    }
+    
+    .onboarding-logo {
+        width: 150px !important;
+        height: auto !important;
+    }
+    
+    /* Adjust navigation in landscape */
+    .nav-bar {
+        height: 50px !important;
+        padding: 5px;
+    }
+    
+    .nav-icon {
+        font-size: 18px !important;
+        margin-bottom: 2px;
+    }
+    
+    .nav-text {
+        font-size: 9px !important;
+    }
+    
+    /* Recipe grids in landscape */
+    .recipe-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    /* Onboarding in landscape */
+    .onboarding-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    
+    .onboarding-content {
+        display: flex;
+        align-items: center;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .onboarding-image-container {
+        flex: 1;
+        margin-right: 40px;
+    }
+    
+    .onboarding-text-container {
+        flex: 1;
+    }
+    
+    /* Header adjustments */
+    .app-header {
+        padding: 10px 15px;
+    }
+    
+    .header-logo-container img {
+        height: 40px !important;
+    }
+    
+    .profile-button {
+        width: 35px !important;
+        height: 35px !important;
+    }
+    
+    /* Content area adjustments */
+    .content-area {
+        padding-bottom: 65px; /* Adjusted for smaller nav */
+    }
+    
+    /* Form elements in landscape */
+    input, select, textarea {
+        padding: 12px 15px;
+        margin-bottom: 12px;
+    }
+    
+    /* Adjust scan intro section for full-width landscape layout */
+    .scan-intro {
+        padding: 20px 2rem !important;
+        margin-bottom: 30px !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
+    .scan-intro h1 {
+        font-size: 28px !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .scan-intro p {
+        font-size: 16px !important;
+        margin-bottom: 0 !important;
+        max-width: 600px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    /* Button adjustments */
+    .button {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+    
+    /* Onboarding step indicators in landscape mode */
+    .onboarding-steps {
+        margin: 10px auto 20px auto;
+        padding: 10px;
+        width: auto;
+        max-width: 220px;
+    }
+    
+    /* Remove the connecting line/bar in landscape mode */
+    .onboarding-steps::before {
+        display: none !important;
+    }
+    
+    .step-indicator {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 16px !important;
+        margin: 0 5px;
+    }
+    
+    /* Enhanced page styling in landscape mode for all pages */
+    .scan-container,
+    .explore-container {
+        padding-bottom: 65px !important; /* Force consistent spacing at bottom */
+    }
+    
+    /* Make scan container utilize full width in landscape */
+    .scan-container {
+        max-width: 100% !important;
+        width: 100vw !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+    
+    /* Ensure background extends through entire viewport in landscape */
+    .scan-container::before,
+    .explore-container::before {
+        bottom: -50px !important; /* Extend past footer */
+    }
+    
+    /* Scan options in landscape - display in a single horizontal row occupying full width */
+    .scan-options {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 2rem !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        justify-content: space-evenly !important;
+        padding: 0 2rem !important;
+        margin: 0 !important;
+    }
+    
+    .scan-option-card {
+        flex: 1 1 25% !important;
+        min-width: 200px !important;
+        max-width: 300px !important;
+        height: 250px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 25px 20px !important;
+        margin: 0 !important;
+    }
+    
+    .scan-option-card .option-icon {
+        font-size: 2.5rem !important;
+        width: 80px !important;
+        height: 80px !important;
+        line-height: 80px !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .scan-option-card h3 {
+        font-size: 1.3rem !important;
+        margin-bottom: 12px !important;
+        font-weight: 600 !important;
+    }
+    
+    .scan-option-card p {
+        font-size: 1rem !important;
+        margin: 0 !important;
+        text-align: center !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* Ensure footer is always visible and properly positioned in landscape */
+    .app-footer {
+        height: 50px !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 100 !important;
+        background-color: white !important;
+    }
+    
+    /* Prevent text selection and cursor display in landscape mode */
+    * {
+        -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+        -khtml-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        cursor: default !important;
+    }
+    
+    /* Allow cursor on actual interactive elements only */
+    a, button, input, select, textarea, [role="button"], [tabindex]:not([tabindex="-1"]) {
+        cursor: pointer !important;
+    }
+    
+    /* Allow selection in input fields */
+    input, textarea {
+        -webkit-user-select: text !important;
+        -khtml-user-select: text !important;
+        -moz-user-select: text !important;
+        -ms-user-select: text !important;
+        user-select: text !important;
+    }
+}
+
+/* Additional media query for larger screens in landscape mode (laptops/PCs) */
+@media screen and (min-width: 993px) and (orientation: landscape) {
+    /* Make scan container utilize full width for larger screens */
+    .scan-container {
+        max-width: 100% !important;
+        width: 100vw !important;
+        padding-left: 3rem !important;
+        padding-right: 3rem !important;
+        padding-bottom: 80px !important;
+    }
+    
+    /* Scan options in landscape - display in a single horizontal row for large screens */
+    .scan-options {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 3rem !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        justify-content: space-evenly !important;
+        padding: 0 3rem !important;
+        margin: 0 !important;
+    }
+    
+    .scan-option-card {
+        flex: 1 1 22% !important;
+        min-width: 250px !important;
+        max-width: 350px !important;
+        height: 300px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 30px 25px !important;
+        margin: 0 !important;
+    }
+    
+    .scan-option-card .option-icon {
+        font-size: 3rem !important;
+        width: 100px !important;
+        height: 100px !important;
+        line-height: 100px !important;
+        margin-bottom: 25px !important;
+    }
+    
+    .scan-option-card h3 {
+        font-size: 1.5rem !important;
+        margin-bottom: 15px !important;
+        font-weight: 600 !important;
+    }
+    
+    .scan-option-card p {
+        font-size: 1.1rem !important;
+        margin: 0 !important;
+        text-align: center !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* Adjust scan intro section for large screens */
+    .scan-intro {
+        padding: 25px 3rem !important;
+        margin-bottom: 40px !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
+    .scan-intro h1 {
+        font-size: 32px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .scan-intro p {
+        font-size: 18px !important;
+        margin-bottom: 0 !important;
+        max-width: 700px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    /* Disable text selection and cursor display in large landscape mode */
+    * {
+        -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+        -khtml-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        cursor: default !important;
+    }
+    
+    /* Allow cursor on actual interactive elements only */
+    a, button, input, select, textarea, [role="button"], [tabindex]:not([tabindex="-1"]) {
+        cursor: pointer !important;
+    }
+    
+    /* Allow selection in input fields */
+    input, textarea {
+        -webkit-user-select: text !important;
+        -khtml-user-select: text !important;
+        -moz-user-select: text !important;
+        -ms-user-select: text !important;
+        user-select: text !important;
+    }
+} 
+/* Universal Landscape Layout for Scan Page - Horizontal Button Layout */ 
+@media screen and (orientation: landscape) and (min-width: 1024px) {
+    /* Force scan options to display horizontally on all laptop/desktop screens */
+    .scan-options {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        align-items: stretch !important;
+        gap: 1.5rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 2rem !important;
+        margin: 0 auto !important;
+        grid-template-columns: none !important; /* Override grid layout */
+    }
+    
+    .scan-option-card {
+        flex: 1 1 25% !important; /* Equal width for all 4 buttons */
+        min-width: 200px !important;
+        max-width: none !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 2rem 1.5rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    
+    .scan-option-card .option-icon {
+        font-size: 2.5rem !important;
+        width: 80px !important;
+        height: 80px !important;
+        line-height: 80px !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .scan-option-card h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.5rem !important;
+        font-weight: 600 !important;
+    }
+    
+    .scan-option-card p {
+        font-size: 0.95rem !important;
+        line-height: 1.4 !important;
+        color: var(--text-light) !important;
+    }
+    
+    /* Extended background blur for landscape layout - cover entire page */
+    .scan-container::before {
+        content: '' !important;
+        position: fixed !important; /* Use fixed positioning for full coverage */
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important; /* Cover entire viewport */
+        width: 100vw !important;
+        height: 100vh !important;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(255,255,255,0.80)) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        pointer-events: none !important;
+        z-index: -1 !important; /* Behind all content */
+    }
+    
+    /* Ensure scan container has proper positioning in landscape */
+    .scan-container {
+        position: relative !important;
+        z-index: 1 !important;
+        min-height: 100vh !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Ensure all content is above the background blur */
+    .scan-container > * {
+        position: relative !important;
+        z-index: 2 !important;
+    }
+    
+    /* Ensure header and footer remain properly positioned */
+    .app-header {
+        position: relative !important;
+        z-index: 100 !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+    }
+    
+    .app-footer {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 100 !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        box-shadow: 0 -2px 8px rgba(0,0,0,0.15) !important;
+    }
+    
+    /* Recipe detail page hero image adjustments for landscape */
+    .recipe-hero-image {
+        height: 250px !important; /* Square-like dimensions for landscape */
+        max-height: 40vh !important; /* Square proportions relative to viewport */
+        width: 250px !important; /* Make it square */
+        max-width: 90vw !important; /* Ensure it fits on screen */
+        margin: 0 auto !important; /* Center the square image */
+        border-radius: 12px !important; /* Add rounded corners for better aesthetics */
+        overflow: hidden !important;
+    }
+    
+    .recipe-hero-image img {
+        object-fit: contain !important; /* Show entire image without cropping */
+        object-position: center !important; /* Center the image */
+        background-color: #f8f9fa !important; /* Light background for letterboxing */
+    }
+    
+    .recipe-overlay {
+        padding: 20px 15px 15px !important; /* Reduced padding for compact layout */
+    }
+    
+    .recipe-overlay h1 {
+        font-size: 20px !important; /* Smaller title for landscape */
+        line-height: 1.2 !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .recipe-meta {
+        gap: 8px !important; /* Reduced gap between meta items */
+    }
+    
+    .recipe-meta span {
+        font-size: 11px !important; /* Smaller meta text */
+        padding: 3px 6px !important; /* Reduced padding */
+    }
+    
+    /* Recipe cards adjustments for landscape mode */
+    .recipe-card {
+        flex: 0 0 180px !important; /* Slightly smaller width for landscape */
+        min-height: 240px !important; /* Ensure enough height for content */
+        padding: 12px 8px !important; /* Adjusted padding */
+    }
+    
+    .recipe-image-container {
+        width: 160px !important; /* Smaller image container */
+        height: 160px !important;
+        margin: 0 auto 10px auto !important;
+    }
+    
+    .recipe-card h3 {
+        font-size: 13px !important; /* Slightly smaller but still visible */
+        margin: 6px 0 3px 0 !important;
+        line-height: 1.2 !important;
+        color: #333 !important; /* Ensure good contrast */
+        display: block !important; /* Force display */
+    }
+    
+    .recipe-card p {
+        font-size: 11px !important; /* Slightly smaller description */
+        color: #666 !important;
+        line-height: 1.2 !important;
+        margin: 0 !important;
+        display: block !important; /* Force display */
+    }
+    
+    /* Adjust save buttons for landscape */
+    .save-recipe-btn {
+        width: 30px !important;
+        height: 30px !important;
+        top: 8px !important;
+        right: 8px !important;
+    }
+    
+    .save-recipe-btn i {
+        font-size: 15px !important;
+    }
+}

@@ -1,0 +1,161 @@
+/**
+ * Base styles for InstaChef App
+ * Contains CSS reset, root variables, and fundamental styling
+ */
+
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Custom Properties (Variables) */
+:root {
+    --primary-color: #7aba40; /* Green from logo */
+    --secondary-color: #f8f8f8;
+    --text-color: #333;
+    --accent-color: #f37b20; /* Orange from logo */
+    --danger-color: #f44336;
+    --gray-light: #f0f0f0;
+    --gray-medium: #ccc;
+    --gray-dark: #666;
+    --white: #ffffff;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --border-color: #eee;
+    --text-light: #666;
+    --card-radius: 12px;
+}
+
+/* Base body styles */
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    line-height: 1.6;
+}
+
+/* App container */
+.app-container {
+    max-width: 600px;
+    margin: 0 auto;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+}
+
+/* Animation keyframes */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Background styling for all app pages */
+.main-content,
+.home-container,
+.explore-container,
+.scan-container,
+.login-container,
+.error-container,
+.onboarding-container,
+.splash-screen,
+.app-container,
+body {
+    background-image: url('../../images/vegies.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    min-height: calc(100vh - 140px); /* Account for header and footer */
+}
+
+.main-content::before,
+.home-container::before,
+.explore-container::before,
+.scan-container::before,
+.login-container::before,
+.error-container::before,
+.app-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.80), rgba(255,255,255,0.75));
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Splash screen without opacity overlay - clear background image */
+.splash-screen::before {
+    display: none;
+}
+
+/* Onboarding page gets special treatment with its own overlay */
+.onboarding-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(255,255,255,0.80));
+    pointer-events: none;
+    z-index: 0;
+}
+
+.main-content > *,
+.home-container > *,
+.explore-container > *,
+.scan-container > *,
+.login-container > *,
+.error-container > *,
+.onboarding-container > *,
+.splash-screen > *,
+.app-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Global disable of text selection and default cursor */
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+/* Allow cursor on interactive elements */
+a, button, input, select, textarea, [role="button"], [tabindex]:not([tabindex="-1"]) {
+    cursor: pointer;
+}
+
+/* Allow text selection in input fields */
+input, textarea {
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
